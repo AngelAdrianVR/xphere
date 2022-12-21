@@ -17,7 +17,13 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'payed_at' => $this->faker->date(),
+            'expired_date' => $this->faker->date(),
+            'amount' => $this->faker->numberBetween(300,1200),
+            'description' => $this->faker->text(50),
+            'concept' => $this->faker->word(),
+            'status' => $this->faker->numberBetween(1,4),
+            'user_id' => $this->faker->numberBetween(1,10),
         ];
     }
 }

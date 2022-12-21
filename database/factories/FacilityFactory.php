@@ -17,7 +17,12 @@ class FacilityFactory extends Factory
     public function definition()
     {
         return [
-            //
+           'name' => $this->faker->word(),
+           'location' => $this->faker->word(),
+           'description' => $this->faker->text(50),
+           'cost' => $this->faker->numberBetween(500,5000),
+           'hours_available' => $this->faker->numberBetween(1,5),
+           'sphere_id' => $this->faker->numberBetween(1,5),
         ];
     }
 }

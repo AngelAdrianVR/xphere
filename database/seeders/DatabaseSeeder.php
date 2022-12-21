@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Sphere;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,7 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\Sphere::factory(5)->create();
+        \App\Models\User::factory(10)->create();
+        \App\Models\Device::factory(3)->create();
+        \App\Models\GuestType::factory(5)->create();
+        \App\Models\Facility::factory(5)->create();
+        \App\Models\Notice::factory(5)->create();
+        \App\Models\ReservationFacility::factory(5)->create();
+        \App\Models\Post::factory(5)->create();
+        \App\Models\Vehicle::factory(5)->create();
+        \App\Models\FavoriteGuest::factory(5)->create();
+        \App\Models\Guest::factory(10)->create();
+        \App\Models\Payment::factory(5)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
