@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('reservation_facilities', function (Blueprint $table) {
             $table->id();
-            $table->timestampTz('event_start');
-            $table->timestampTz('event_end');
+            $table->time('event_start');
+            $table->time('event_end');
             $table->unsignedTinyInteger('status');
             $table->text('notes')->nullable();
             $table->date('reservation_date')->nullable();

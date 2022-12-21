@@ -17,7 +17,10 @@ class NoticeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->word(),
+            'description' => $this->faker->word(),
+            'expired_date' => $this->faker->date(),
+            'sphere_id' => $this->faker->numberBetween(1,5),
         ];
     }
 }

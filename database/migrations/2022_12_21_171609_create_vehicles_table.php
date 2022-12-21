@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('brand');
             $table->string('model');
-            $table->string('plate');
+            $table->string('plate_car');
             $table->string('color');
             $table->text('notes')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

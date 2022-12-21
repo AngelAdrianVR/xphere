@@ -15,5 +15,6 @@ class FavoriteGuest extends Model
         'notes',
         'guest_type_id',
         'user_id',
+        'arrived_at', //timezone not date
     ];
 }

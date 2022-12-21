@@ -17,7 +17,13 @@ class ReservationFacilityFactory extends Factory
     public function definition()
     {
         return [
-            //
-        ];
+            'event_start' => $this->faker->numberBetween(1,24),
+            'event_end' => $this->faker->numberBetween(1,24),
+            'status' => $this->faker->numberBetween(1,4),
+            'notes' => $this->faker->word(),
+            'reservation_date' => $this->faker->date(),
+            'user_id' => $this->faker->numberBetween(1,10),
+            'facility_id' => $this->faker->numberBetween(1,5),
+            ];
     }
 }
