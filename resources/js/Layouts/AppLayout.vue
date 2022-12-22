@@ -8,6 +8,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import SideBar from '@/Components/SideBar.vue';
 
 defineProps({
     title: String,
@@ -29,15 +30,21 @@ const logout = () => {
 </script>
 
 <template>
-    <div>
+    <div class="relative">
         <Head :title="title" />
 
         <Banner />
 
-        <div class="min-h-screen bg-gray-100">
+
+        <div class="overflow-scroll h-screen bg-gray-200 lg:grid lg:grid-cols-6">
+        <aside>
+        <SideBar />
+      </aside>
+        <main class="col-span-5">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
@@ -303,7 +310,7 @@ const logout = () => {
             </header>
 
             <!-- Page Content -->
-            <main>
+            
                 <slot />
             </main>
         </div>
