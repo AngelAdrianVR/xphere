@@ -43,7 +43,7 @@ const logout = () => {
       <aside>
         <SideBar />
       </aside>
-      <main class="col-span-5 z-10">
+      <main class="col-span-5">
         <nav class="bg-gradient-to-tl from-slate-700 to-cyan-700 border-b-2 border-gray-500 shadow-md shadow-gray-500/100">
           <!-- Primary Navigation Menu -->
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -345,7 +345,31 @@ const logout = () => {
                 :href="route('dashboard')"
                 :active="false"
               >
-                Dashboard
+                Visitas
+              </ResponsiveNavLink>
+              <ResponsiveNavLink
+                :href="route('dashboard')"
+                :active="false"
+              >
+                Pagos
+              </ResponsiveNavLink>
+              <ResponsiveNavLink
+                :href="route('dashboard')"
+                :active="false"
+              >
+                Sección Vecinal
+              </ResponsiveNavLink>
+              <ResponsiveNavLink
+                :href="route('dashboard')"
+                :active="false"
+              >
+                Reservación de Areas
+              </ResponsiveNavLink>
+              <ResponsiveNavLink
+                :href="route('dashboard')"
+                :active="false"
+              >
+                Servicios Externos
               </ResponsiveNavLink>
             </div>
 
