@@ -187,6 +187,28 @@ const logout = () => {
                   </Dropdown>
                 </div>
 
+                <Dropdown align="center" class="mr-5" width="lg">
+                            <template #trigger>
+                                <i class="fa-solid fa-bell text-gray-300 text-xl hover:text-white cursor-pointer"></i>
+                            </template>
+                            <template #content>
+                            <div class="text-sm text-white p-3 felx flex-row space-y-3 h-48 overflow-auto">
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                            </div>
+                            </template>
+                            </Dropdown>
+                
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                   <Dropdown align="right" width="48">
@@ -247,7 +269,7 @@ const logout = () => {
                         </button>
                       </span>
                     </template>
-
+                    
                     <template #content>
                       <!-- Account Management -->
                       <div class="block px-4 py-2 text-xs text-white">
@@ -277,7 +299,31 @@ const logout = () => {
               </div>
 
               <!-- Hamburger -->
+              
               <div class="-mr-2 flex items-center sm:hidden">
+
+              <Dropdown align="right" class="mr-3">
+                            <template #trigger>
+                                <i class="fa-solid fa-bell text-gray-200 text-lg"></i>
+                            </template>
+                            <template #content>
+                            <div class="text-xs text-white p-3 felx flex-row space-y-3 h-48 overflow-auto">
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones para prueba de deasas</p>
+                                <p>Aquí van tus notificaciones</p>
+                                <p>Aquí van tus notificaciones dsgfsdgf dgdrfg sdg d</p>
+                            </div>
+                            </template>
+                            </Dropdown>
+
                 <button
                   class="
                     inline-flex
@@ -322,10 +368,11 @@ const logout = () => {
                     />
                   </svg>
                 </button>
+                
               </div>
             </div>
           </div>
-
+            
           <!-- Responsive Navigation Menu -->
           <div
             :class="{
@@ -342,8 +389,8 @@ const logout = () => {
                 Dashboard
               </ResponsiveNavLink>
               <ResponsiveNavLink
-                :href="route('dashboard')"
-                :active="false"
+                :href="route('guest.index')"
+                :active="route().current('guest.*')"
               >
                 Visitas
               </ResponsiveNavLink>
@@ -359,6 +406,12 @@ const logout = () => {
               >
                 Sección Vecinal
               </ResponsiveNavLink>
+              <a
+                :href="route('chatify')"
+                class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-300 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
+              >
+                Chat
+              </a>
               <ResponsiveNavLink
                 :href="route('dashboard')"
                 :active="false"
