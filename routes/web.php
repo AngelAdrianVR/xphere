@@ -1,6 +1,9 @@
 <?php
 
+
 use App\Models\Post;
+use App\Http\Controllers\GuestController;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,3 +36,6 @@ Route::get('neighborhood', function() {
 
     return inertia('Neighborhood/Index', compact('posts'));
 })->middleware('auth')->name('neighborhood.index');
+
+Route::resource('guest',GuestController::class)->except('show');
+
