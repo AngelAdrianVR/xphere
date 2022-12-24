@@ -40,10 +40,10 @@ const logout = () => {
     <Banner />
 
     <div class="h-screen bg-gray-200 lg:grid lg:grid-cols-6">
-      <!-- <aside>
+      <aside>
         <SideBar />
-      </aside> -->
-      <main class="col-span-6">
+      </aside>
+      <main class="col-span-5 z-10">
         <nav class="bg-gradient-to-tl from-slate-700 to-cyan-700 border-b-2 border-gray-500 shadow-md shadow-gray-500/100">
           <!-- Primary Navigation Menu -->
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +57,7 @@ const logout = () => {
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                   <NavLink
                     :href="route('dashboard')"
                     :active="route().current('dashboard')"
@@ -70,7 +70,7 @@ const logout = () => {
                   >
                     Panel de Inicio
                   </NavLink>
-                </div>
+                </div> -->
               </div>
 
               <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -217,14 +217,15 @@ const logout = () => {
                             items-center
                             px-3
                             py-2
-                            border border-transparent
+                            border border-gray-600
                             text-sm
                             leading-4
                             font-medium
                             rounded-md
-                            text-gray-500
-                            bg-white
-                            hover:text-gray-700
+                            text-gray-600
+                            bg-gray-300
+                            hover:text-teal-800
+                            hover:border-teal-600
                             focus:outline-none
                             transition
                           "
@@ -249,7 +250,7 @@ const logout = () => {
 
                     <template #content>
                       <!-- Account Management -->
-                      <div class="block px-4 py-2 text-xs text-gray-400">
+                      <div class="block px-4 py-2 text-xs text-white">
                         Manage Account
                       </div>
 
