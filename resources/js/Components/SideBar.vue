@@ -2,7 +2,7 @@
 <!-- component -->
 
     <div
-      class="h-full w-screen flex flex-row "
+      class="h-full w-screen flex flex-row fixed "
     >
       <div
         class="bg-gray-300 h-screen xs:hidden lg:block lg:w-52 xl:w-64 shadow-lg shadow-gray-600/100 px-3 w-60 "
@@ -19,8 +19,8 @@
           
           <div id="menu" class="flex flex-col space-y-2">
             <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white hover:text-base rounded-md transition duration-150 ease-in-out"
+              :href="route('dashboard')"
+              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
