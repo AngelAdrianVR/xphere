@@ -46,7 +46,7 @@ const logout = () => {
       <main class="col-span-5">
         <nav class="bg-gradient-to-tl from-slate-700 to-cyan-700 border-b-2 border-gray-500 shadow-md shadow-gray-500/100">
           <!-- Primary Navigation Menu -->
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
               <div class="flex">
                 <!-- Logo -->
@@ -55,22 +55,6 @@ const logout = () => {
                     <ApplicationMark class="block h-9 w-auto" />
                   </Link>
                 </div>
-
-                <!-- Navigation Links -->
-                <!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                  <NavLink
-                    :href="route('dashboard')"
-                    :active="route().current('dashboard')"
-                  >
-                    Panel de Inicio
-                  </NavLink>
-                  <NavLink
-                    :href="route('dashboard')"
-                    :active="false"
-                  >
-                    Panel de Inicio
-                  </NavLink>
-                </div> -->
               </div>
 
               <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -482,15 +466,22 @@ const logout = () => {
         </nav>
 
         <!-- Page Heading -->
-        <header v-if="$slots.header" class="bg-gray-300 shadow-md shadow-gray-400 rounded-b-xl">
-          <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <header v-if="$slots.header" class="bg-gray-300 shadow-md shadow-gray-400 rounded-b-md">
+          <div class="mx-auto py-1 px-4 sm:px-6 lg:px-8">
             <slot name="header" />
           </div>
         </header>
-
-        <!-- Page Content -->
-
-        <slot />
+        
+        <div
+          class="
+            overflow-y-auto
+            h-[calc(100vh-6.4rem)]
+            transition-dark
+            dark:bg-slate-900
+          "
+        >
+          <slot />
+        </div>
       </main>
     </div>
   </div>

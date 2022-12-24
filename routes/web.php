@@ -1,19 +1,9 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -33,3 +23,13 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::resource('post', UserController::class)->middleware('auth')->except('show');
+
+Route::get('neighborhood', function() {
+    $posts = Post::whereHas('user', function($query) {
+        $query->where('sphere_id', auth()->user()->sphere_id);
+    })->paginate(15);
+
+    return inertia('Neighborhood/Index', compact('posts'));
+})->middleware('auth')->name('neighborhood.index');

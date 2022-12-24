@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\Sphere::factory(5)->create();
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(25)->create();
         \App\Models\Device::factory(3)->create();
         \App\Models\GuestType::factory(5)->create();
         \App\Models\Facility::factory(5)->create();
@@ -29,9 +29,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Guest::factory(10)->create();
         \App\Models\Payment::factory(5)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Gladiolas 301',
+            'email' => 'test@example.com',
+        ]);
     }
 }
