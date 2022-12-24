@@ -11,7 +11,13 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'description',
+        'content',
         'user_id',
     ];
+
+    // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
