@@ -2,7 +2,7 @@
 <!-- component -->
 
     <div
-      class="h-full w-screen flex flex-row fixed "
+      class="h-full w-screen flex flex-row"
     >
       <div
         class="bg-gray-300 h-screen xs:hidden lg:block lg:w-52 xl:w-64 shadow-lg shadow-gray-600/100 px-3 w-60 "
@@ -18,9 +18,9 @@
           </div>
           
           <div id="menu" class="flex flex-col space-y-2">
-            <a
+            <SideBarLink
               :href="route('dashboard')"
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+              :active="route().current('dashboard')"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
@@ -33,10 +33,10 @@
                 ></path>
               </svg>
               <span class=""> Panel de Inicio</span>
-            </a>
-            <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+            </SideBarLink>
+            <SideBarLink
+              :href="route('dashboard')"
+              :active="false"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
@@ -49,10 +49,10 @@
                 ></path>
               </svg>
               <span class=""> Visitas</span>
-            </a>
-            <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+            </SideBarLink>
+            <SideBarLink
+              :href="route('dashboard')"
+              :active="false"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
@@ -68,11 +68,12 @@
                 ></path>
               </svg>
               <span class=""> Pagos</span>
-            </a>
-            <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+            </SideBarLink>
+            <SideBarLink
+              :href="route('dashboard')"
+              :active="false"
             >
+
               <svg
                 class="w-6 h-6 fill-current inline-block"
                 fill="currentColor"
@@ -87,10 +88,10 @@
                 ></path>
               </svg>
               <span class=""> Sección Vecinal</span>
-            </a>
-            <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+            </SideBarLink>
+            <SideBarLink
+              :href="route('dashboard')"
+              :active="false"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
@@ -105,10 +106,10 @@
                 ></path>
               </svg>
               <span class=""> Reservación de Areas</span>
-            </a>
-            <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+            </SideBarLink>
+            <SideBarLink
+              :href="route('dashboard')"
+              :active="false"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
@@ -123,10 +124,10 @@
                 ></path>
               </svg>
               <span class=""> Servicios Externos</span>
-            </a>
-            <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+            </SideBarLink>
+            <SideBarLink
+              :href="route('dashboard')"
+              :active="false"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
@@ -139,10 +140,10 @@
                 ></path>
               </svg>
               <span class=""> UI Components</span>
-            </a>
-            <a
-              href=""
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-teal-700 to-teal-300 hover:text-white rounded-md transition duration-150 ease-in-out"
+            </SideBarLink>
+            <SideBarLink
+              :href="route('dashboard')"
+              :active="false"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"
@@ -155,9 +156,23 @@
                 ></path>
               </svg>
               <span class=""> Users</span>
-            </a>
+            </SideBarLink>
           </div>
         </div>
       </div>
       </div>
 </template>
+
+<script>
+import SideBarLink from "@/Components/SideBarLink.vue";
+export default {
+  data(){
+    return{
+
+    }
+  },
+  components:{
+    SideBarLink,
+  }
+}
+</script>
