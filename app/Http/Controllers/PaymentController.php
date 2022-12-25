@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\GuestResource;
-use App\Models\Guest;
-use App\Models\GuestType;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class GuestController extends Controller
+class PaymentController extends Controller
 {
 
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +20,7 @@ class GuestController extends Controller
      */
     public function index()
     {
-        $guests = GuestResource::collection(Guest::with('guestType')->get());
-        // return $guests;
-        return Inertia::render('Guest/Index',compact('guests'));
+        return Inertia::render('Payment/Index');
     }
 
     /**
@@ -35,9 +30,7 @@ class GuestController extends Controller
      */
     public function create()
     {
-        $guest_types = GuestType::all();
-        // return $guest_types;
-        return Inertia::render('Guest/Create', compact('guest_types'));
+        //
     }
 
     /**
@@ -54,10 +47,10 @@ class GuestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $guest
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Guest $guest)
+    public function show(Payment $payment)
     {
         //
     }
@@ -65,10 +58,10 @@ class GuestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $guest
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guest $guest)
+    public function edit(Payment $payment)
     {
         //
     }
@@ -77,10 +70,10 @@ class GuestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $guest
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $guest)
+    public function update(Request $request, Payment $payment)
     {
         //
     }
@@ -88,10 +81,10 @@ class GuestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $guest
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Guest $guest)
+    public function destroy(Payment $payment)
     {
         //
     }

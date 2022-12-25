@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->word(),
-            'description' => $this->faker->word(),
+            'content' => $this->faker->word(),
             'user_id' => $this->faker->numberBetween(1,10),
         ];
     }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->time('arrived_at'); //hora no fecha
+            $table->time('arrived_time')->nullable(); //hora no fecha
             $table->string('plate_car');
             $table->text('notes');
             $table->foreignId('guest_type_id')->constrained()->onDelete('cascade');

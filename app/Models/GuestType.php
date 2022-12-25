@@ -12,4 +12,13 @@ class GuestType extends Model
     protected $fillable = [
         'name',
     ];
+
+    //relationships
+    public function guest(){
+        return $this->hasMany(Guest::class);
+    }
+
+    public function favoriteGuest(){
+        return $this->hasMany(FavoriteGuest::class);
+    }
 }

@@ -48,8 +48,8 @@
               <span class="ml-1"> Visitas</span>
             </SideBarLink>
             <SideBarLink
-              :href="route('dashboard')"
-              :active="false"
+              :href="route('payments.index')"
+              :active="route().current('payments.*')"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"

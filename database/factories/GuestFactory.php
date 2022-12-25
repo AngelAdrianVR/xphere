@@ -19,7 +19,7 @@ class GuestFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'arrived_at' => now()->toTimeString(),
+            'arrived_time' => now()->toTimeString(),
             'plate_car' => 'asdfghjk',
             'notes' => $this->faker->word(),
             'guest_type_id' =>$this->faker->numberBetween(1,5),
