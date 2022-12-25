@@ -1,23 +1,16 @@
 <template>
-    <AppLayout title="Visitas">
+    <AppLayout title="Pagos">
          <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
-                Visitas
+                Pagos
             </h2>
         </template>
         
-        <div class="flex lg:justify-end xs:justify-center">
-            <Link :href="route('guest.create')">
-                <SecondaryButton class="mr-7 mt-4">Programar Visita</SecondaryButton>
-            </Link>
-        </div>
-
-            <GuestsTable :guests="guests"/>
+        
     </AppLayout>
 </template>
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import GuestsTable from '@/Components/GuestsTable.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
@@ -30,14 +23,13 @@ export default {
 
     components:{
         AppLayout,
-        GuestsTable,
         Link,
         PrimaryButton,
         SecondaryButton,
     },
 
     props:{
-        guests: Array,
+
     },
 
     methods:{

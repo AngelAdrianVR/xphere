@@ -379,14 +379,14 @@ const logout = () => {
                 Visitas
               </ResponsiveNavLink>
               <ResponsiveNavLink
-                :href="route('dashboard')"
-                :active="false"
+                :href="route('payments.index')"
+                :active="route().current('payments.*')"
               >
                 Pagos
               </ResponsiveNavLink>
               <ResponsiveNavLink
-                :href="route('dashboard')"
-                :active="false"
+                :href="route('neighborhood.index')"
+                :active="route().current('neighborhood.*')"
               >
                 Sección Vecinal
               </ResponsiveNavLink>
@@ -520,7 +520,7 @@ const logout = () => {
 
         <!-- Page Heading -->
         <header v-if="$slots.header" class="bg-gray-300 shadow-md shadow-gray-400 rounded-b-md">
-          <div class="mx-auto py-1 px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto py-2 px-4 sm:px-6 lg:px-8">
             <slot name="header" />
           </div>
         </header>
@@ -528,7 +528,7 @@ const logout = () => {
         <div
           class="
             overflow-y-auto
-            h-[calc(100vh-6.4rem)]
+            h-[calc(100vh-6.7rem)]
             transition-dark
             dark:bg-slate-900
           "

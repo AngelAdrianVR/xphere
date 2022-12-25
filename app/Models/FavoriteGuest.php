@@ -17,4 +17,9 @@ class FavoriteGuest extends Model
         'user_id',
         'arrived_at', //timezone not date
     ];
+
+    //relationships
+    public function guestType(){
+       return $this->belongsTo(GuestType::class);
+    }
 }
