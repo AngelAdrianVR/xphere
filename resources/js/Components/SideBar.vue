@@ -107,8 +107,8 @@
               <span class="ml-1"> Chat</span>
             </a>
             <SideBarLink
-              :href="route('chatify')"
-              :active="false"
+              :href="route('reservation-facilities.index')"
+              :active="route().current('reservation-facilities.*')"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"

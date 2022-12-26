@@ -39,7 +39,7 @@ const logout = () => {
 
     <Banner />
 
-    <div class="h-screen bg-gray-200 lg:grid lg:grid-cols-6">
+    <div class="h-screen bg-gray-100 lg:grid lg:grid-cols-6">
       <aside>
         <SideBar />
       </aside>

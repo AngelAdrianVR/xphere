@@ -21,10 +21,12 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $guests = GuestResource::collection(Guest::with('guestType')->get());
-        // return $guests;
+        $filters = $request->all('search');
+
+        $guests = GuestResource::collection(auth()->user()->guests()->with('guestType')->filter($filters)
+                    ->latest()->paginate(30));
         return Inertia::render('Guest/Index',compact('guests'));
     }
 
@@ -48,7 +50,18 @@ class GuestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $request->validate([
+            'name' => 'required|max:50',
+            'notes' => 'max:100',
+        ]);
+
+       Guest::create($request->all() + ['user_id'=>auth()->id()]);
+        
+        request()->session()->flash('flash.banner', 'Se ha programado tu visita');
+        request()->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('guest.index');
     }
 
     /**
