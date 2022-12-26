@@ -4,6 +4,7 @@
 use App\Models\Post;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReservationFacilityController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,7 +30,6 @@ Route::middleware([
 
 Route::resource('post', UserController::class)->middleware('auth')->except('show');
 
-
 //Guests routes (resource)
 Route::resource('guest',GuestController::class)->except('show');
 
@@ -44,4 +44,6 @@ Route::get('neighborhood', function() {
     return inertia('Neighborhood/Index', compact('posts'));
 })->middleware('auth')->name('neighborhood.index');
 
-
+//Facilities Reservation routes (resource)
+Route::get('/reservation-facilities',[ReservationFacilityController::class, 'index'])
+        ->name('reservation-facilities.index');

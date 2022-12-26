@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->time('arrived_time')->nullable(); //hora no fecha
-            $table->string('plate_car');
-            $table->text('notes');
+            $table->string('plate_car')->nullable();
+            $table->text('notes')->nullable();
             $table->foreignId('guest_type_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
