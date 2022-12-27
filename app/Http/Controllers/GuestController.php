@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\GuestResource;
+use App\Models\FavoriteGuest;
 use App\Models\Guest;
 use App\Models\GuestType;
 use Illuminate\Http\Request;
@@ -55,6 +56,10 @@ class GuestController extends Controller
             'name' => 'required|max:50',
             'notes' => 'max:100',
         ]);
+
+        if($request->favorite_guest){
+            FavoriteGuest::create($request->all() + ['user_id'=>auth()->id()]);
+        }
 
        Guest::create($request->all() + ['user_id'=>auth()->id()]);
         

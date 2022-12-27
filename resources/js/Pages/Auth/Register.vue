@@ -9,6 +9,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
 const form = useForm({
+    sphere_uid: '',
     name: '',
     email: '',
     password: '',
@@ -32,8 +33,20 @@ const submit = () => {
         </template>
 
         <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" class="text-white" />
+            <div class="mt-4">
+            <InputLabel value="Código único de fraccionamiento / coto" class="text-white" />
+                <TextInput
+                    v-model="form.sphere_uid"
+                    type="text"
+                    class="mt-1 block w-full bg-gray-300"
+                    required
+                    autofocus
+                    autocomplete="sphere"
+                />
+                <InputError class="mt-2" :message="form.errors.sphere_uid" />
+            </div>
+            <div class="mt-4">
+                <InputLabel for="name" value="Usuario" class="text-white" />
                 <TextInput
                     id="name"
                     v-model="form.name"
@@ -98,12 +111,12 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-teal-500">
+                    <p class="text-white">¿Ya te registraste?</p> 
                 </Link>
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    Registrar
                 </PrimaryButton>
             </div>
         </form>

@@ -157,5 +157,6 @@ return [
         'bank_name' => 'nombre de banco',
         'limit_date' => 'fecha límite',
         'terms' => 'Términos y condiciones',
+        'sphere_uid' => 'Código único de fraccionamiento',
     ],
 ];
