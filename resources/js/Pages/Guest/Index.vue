@@ -11,11 +11,10 @@
                 <SecondaryButton class="mr-7 mt-4">Programar Visita</SecondaryButton>
             </Link>
 
+        </div>
             <SearchInput 
             :filters="filters"
             filterURL="/guest" />
-
-        </div>
             <GuestsTable :guests="guests"/>
         <div class="flex justify-end">
             <Pagination :pagination="guests"/>
@@ -29,6 +28,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import Pagination from '@/Components/Pagination.vue';
+import SearchInput from '@/Components/SearchInput.vue';
 export default {
     data(){
         return{
@@ -43,6 +43,7 @@ export default {
         PrimaryButton,
         SecondaryButton,
         Pagination,
+        SearchInput,
     },
 
     props:{

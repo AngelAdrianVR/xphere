@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReservationFacilityController;
+use App\Models\Sphere;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,7 +25,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        $sphere = auth()->user()->sphere;
+        return Inertia::render('Dashboard', compact('sphere'));
     })->name('dashboard');
 });
 
