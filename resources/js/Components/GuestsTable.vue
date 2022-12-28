@@ -2,7 +2,7 @@
     <div>
         <!-- component -->
 
-<section class="relative pt-5 bg-blueGray-50">
+<section class="relative bg-blueGray-50">
 <div class="w-full px-4">
   <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded 
   bg-cyan-900 text-white">

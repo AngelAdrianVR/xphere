@@ -33,5 +33,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Gladiolas 301',
             'email' => 'test@example.com',
         ]);
+
+        // \App\Models\GuestType::factory()->create([
+        //     ['name' => 'Familia'],
+        //     ['name' => 'Proveedor'],
+        //     ['name' => 'Servicios'],
+        //     ['name' => 'Paquetería'],
+        //     ['name' => 'Otro'],
+        //     ]);
     }
 }

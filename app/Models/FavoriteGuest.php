@@ -13,9 +13,10 @@ class FavoriteGuest extends Model
         'name',
         'plate_car',
         'notes',
+        'brand_car',
         'guest_type_id',
         'user_id',
-        'arrived_at', //timezone not date
+        'arrived_time', //timezone not date
     ];
 
     //relationships
