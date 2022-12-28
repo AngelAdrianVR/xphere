@@ -8,7 +8,7 @@
         
         <div class="flex lg:justify-end xs:justify-center">
             <Link :href="route('guest.create')">
-                <SecondaryButton class="mr-7 mt-4">Programar Visita</SecondaryButton>
+                <SecondaryButton class="mr-7 mt-2">Programar Visita</SecondaryButton>
             </Link>
 
         </div>
