@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -20,7 +21,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Payment/Index');
+        $payments = PaymentResource::collection(Payment::with('user')->latest()->get());
+        // return $payments;
+        return Inertia::render('Payment/Index',compact('payments'));
     }
 
     /**

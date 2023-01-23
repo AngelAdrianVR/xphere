@@ -5,6 +5,10 @@
                 Pagos
             </h2>
         </template>
+
+    <div>
+        <PaymentTable :payments="payments" />
+    </div>
         
         
     </AppLayout>
@@ -14,6 +18,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
+import PaymentTable from '@/Components/PaymentTable.vue';
 export default {
     data(){
         return{
@@ -26,10 +31,11 @@ export default {
         Link,
         PrimaryButton,
         SecondaryButton,
+        PaymentTable,
     },
 
     props:{
-
+        payments: Object,
     },
 
     methods:{
