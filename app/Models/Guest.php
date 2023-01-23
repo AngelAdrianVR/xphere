@@ -13,6 +13,7 @@ class Guest extends Model
         'name',
         'arrived_time', //timezone not date
         'plate_car',
+        'brand_car',
         'notes',
         'guest_type_id',
         'user_id',
