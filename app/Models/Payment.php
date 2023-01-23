@@ -23,4 +23,10 @@ class Payment extends Model
         'payed_at',
         'expired_date',
     ];
+
+    //relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
