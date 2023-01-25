@@ -4,9 +4,9 @@
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Programar Visita</h2>
     </template>
 
-    <div class="flex justify-start">
+    <div class="flex justify-start ml-2">
       <Link :href="route('guest.index')" class="flex items-center mt-2 text-slate-700">
-        <i class="fas fa-long-arrow-alt-left text-lg hover:bg-gray-300 bg-opacity-100 rounded-full w-7 h-7 pl-1"></i>
+        <i class="fas fa-long-arrow-alt-left text-lg hover:bg-gray-200 rounded-full w-7 h-7 pl-1"></i>
         <span class="ml-1 cursor-default">Atrás</span>
       </Link>
     </div>
