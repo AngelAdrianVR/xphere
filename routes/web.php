@@ -4,6 +4,7 @@
 use App\Models\Post;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationFacilityController;
 use App\Models\Sphere;
 use Illuminate\Foundation\Application;
@@ -30,21 +31,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('post', UserController::class)->middleware('auth')->except('show');
-
-//Guests routes (resource)
+//User Routes
+Route::resource('neighborhood', PostController::class)->middleware('auth');
 Route::resource('guest',GuestController::class)->except('show');
-
-//Payments routes (resource)
 Route::resource('payments',PaymentController::class);
 
-Route::get('neighborhood', function() {
-    $posts = Post::whereHas('user', function($query) {
-        $query->where('sphere_id', auth()->user()->sphere_id);
-    })->paginate(15);
-
-    return inertia('Neighborhood/Index', compact('posts'));
-})->middleware('auth')->name('neighborhood.index');
 
 //Facilities Reservation routes (resource)
 Route::get('/reservation-facilities',[ReservationFacilityController::class, 'index'])
