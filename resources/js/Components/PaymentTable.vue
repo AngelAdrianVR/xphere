@@ -67,9 +67,7 @@ export default {
     payments: Object,
   },
   methods:{
-    openDropdown(element_id) {
-      document.getElementById(element_id).classList.remove('hidden');
-    }
+   
   },
 }
 </script>

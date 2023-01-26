@@ -27,4 +27,15 @@ class FavoriteGuest extends Model
     public function user(){
        return $this->belongsTo(User::class);
     }
+
+     // query scopes
+     public function scopeFilter($query, $filters)
+     {
+         $query->when($filters["search"] ?? null, function($query, $search){
+             $query->where('name', 'LIKE', "%$search%")
+                   ->orWhere('guest_type', 'LIKE', "%$search%")
+                   ->orWhere('created_at', 'LIKE', "%$search%");
+ 
+         });
+     }
 }
