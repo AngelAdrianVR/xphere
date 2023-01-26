@@ -17,4 +17,15 @@ class Facility extends Model
         'hours_available',
         'sphere_id',  
     ];
+    
+    //relationships
+    public function sphere()
+    {
+        return $this->belongsTo(Sphere::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(ReservationFacility::class);
+    }
 }

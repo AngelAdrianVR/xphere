@@ -71,7 +71,38 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function guests(){
+    public function guests()
+    {
         return $this->hasMany(Guest::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function accesDevices()
+    {
+        return $this->hasMany(Device::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function reservatedFacilities()
+    {
+        return $this->hasMany(ReservationFacility::class);
+    }
+
+    public function vehicle()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
+
+    public function favoriteGuests()
+    {
+        return $this->hasMany(FavoriteGuest::class);
     }
 }

@@ -23,4 +23,8 @@ class FavoriteGuest extends Model
     public function guestType(){
        return $this->belongsTo(GuestType::class);
     }
+
+    public function user(){
+       return $this->belongsTo(User::class);
+    }
 }

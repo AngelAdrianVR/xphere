@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\FacilityResource;
 use App\Models\Facility;
-use App\Models\ReservationFacility;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ReservationFacilityController extends Controller
+class FacilityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class ReservationFacilityController extends Controller
      */
     public function index()
     {
-        $sphere_id = auth()->user()->sphere_id;
-        $facilities = FacilityResource::collection(Facility::where('sphere_id', $sphere_id)->get());
-
-        return Inertia::render('ReservationFacilities/Index', compact('facilities'));
+        
     }
 
     /**
@@ -47,10 +42,10 @@ class ReservationFacilityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ReservationFacility  $reservationFacility
+     * @param  \App\Models\Facility  $facility
      * @return \Illuminate\Http\Response
      */
-    public function show(ReservationFacility $reservationFacility)
+    public function show(Facility $facility)
     {
         //
     }
@@ -58,10 +53,10 @@ class ReservationFacilityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ReservationFacility  $reservationFacility
+     * @param  \App\Models\Facility  $facility
      * @return \Illuminate\Http\Response
      */
-    public function edit(ReservationFacility $reservationFacility)
+    public function edit(Facility $facility)
     {
         //
     }
@@ -70,10 +65,10 @@ class ReservationFacilityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ReservationFacility  $reservationFacility
+     * @param  \App\Models\Facility  $facility
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ReservationFacility $reservationFacility)
+    public function update(Request $request, Facility $facility)
     {
         //
     }
@@ -81,10 +76,10 @@ class ReservationFacilityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ReservationFacility  $reservationFacility
+     * @param  \App\Models\Facility  $facility
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ReservationFacility $reservationFacility)
+    public function destroy(Facility $facility)
     {
         //
     }
