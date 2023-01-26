@@ -32,6 +32,8 @@ Route::middleware([
 //User Routes
 Route::resource('neighborhood', PostController::class)->middleware('auth');
 Route::resource('guest',GuestController::class)->except('show');
+Route::get('/guest/favorites',[GuestController::class, 'favorite'])->name('guest.favorite');
+Route::get('/guest/favorites/create',[GuestController::class, 'createFavorite'])->name('guest.createFavorite');
 Route::resource('payments',PaymentController::class);
 Route::resource('reservation-facilities',ReservationFacilityController::class);
 

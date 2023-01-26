@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FavoriteGuestResource;
 use App\Http\Resources\GuestResource;
 use App\Models\FavoriteGuest;
 use App\Models\Guest;
@@ -26,9 +27,20 @@ class GuestController extends Controller
     {
         $filters = $request->all('search');
 
-        $guests = GuestResource::collection(auth()->user()->guests()->with('guestType')->filter($filters)
+        $guests = GuestResource::collection(auth()->user()->guests()->with(['guestType','user'])->filter($filters)
                     ->latest()->paginate(30));
+
         return Inertia::render('Guest/Index',compact('guests'));
+    }
+
+    public function favorite(Request $request)
+    {
+        $filters = $request->all('search');
+
+        $favorite_guests = FavoriteGuestResource::collection(auth()->user()->favoriteGuests()->with(['guestType','user'])->filter($filters)
+                    ->latest()->paginate(30));
+                    // return $favorite_guests;
+        return Inertia::render('Guest/Favorite',compact('favorite_guests'));
     }
 
     /**
@@ -43,6 +55,12 @@ class GuestController extends Controller
         return Inertia::render('Guest/Create', compact('guest_types'));
     }
 
+    public function createFavorite()
+    {
+        $guest_types = GuestType::all();
+        return Inertia::render('Guest/CreateFavorite', compact('guest_types'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,10 +69,11 @@ class GuestController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
         $request->validate([
             'name' => 'required|max:50',
             'notes' => 'max:100',
+            'brand_car' => 'nullable|max:100',
+            'plate_car' => 'nullable|max:8',
         ]);
 
         if($request->favorite_guest){

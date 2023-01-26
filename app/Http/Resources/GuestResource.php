@@ -31,10 +31,12 @@ class GuestResource extends JsonResource
         }
 
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'arrived_time' => $this->arrived_time,
             'status' => $status,
             'plate_car' => $this->plate_car,
+            'brand_car' => $this->brand_car,
             'notes' => $this->notes,
             'guest_type' => $this->whenLoaded('guestType'),
             'created_at' => $this->created_at->isoformat('DD MMM, YYYY hh:mm a'),
