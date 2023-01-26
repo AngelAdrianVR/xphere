@@ -22,4 +22,15 @@ class ReservationFacility extends Model
     protected $dates = [ 
         'reservation_date',
     ];
+
+    //relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function facility()
+    {
+        return $this->belongsTo(Facility::class);
+    }
 }

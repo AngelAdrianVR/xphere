@@ -39,7 +39,7 @@ const logout = () => {
 
     <Banner />
 
-    <div class="h-screen bg-gray-100 lg:grid lg:grid-cols-6">
+    <div class="h-screen bg-gray-200 lg:grid lg:grid-cols-6">
       <aside>
         <SideBar />
       </aside>
@@ -431,8 +431,8 @@ const logout = () => {
                 Chat
               </a>
               <ResponsiveNavLink
-                :href="route('dashboard')"
-                :active="false"
+                :href="route('reservation-facilities.index')"
+                :active="route().current('reservation-facilities.*')"
               >
               <svg
                 class="w-6 h-6 fill-current inline-block"

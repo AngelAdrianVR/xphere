@@ -1,12 +1,10 @@
 <?php
 
-
-use App\Models\Post;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationFacilityController;
-use App\Models\Sphere;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,8 +33,6 @@ Route::middleware([
 Route::resource('neighborhood', PostController::class)->middleware('auth');
 Route::resource('guest',GuestController::class)->except('show');
 Route::resource('payments',PaymentController::class);
+Route::resource('reservation-facilities',ReservationFacilityController::class);
 
-
-//Facilities Reservation routes (resource)
-Route::get('/reservation-facilities',[ReservationFacilityController::class, 'index'])
-        ->name('reservation-facilities.index');
+// Route::resource('facilities',FacilityController::class);

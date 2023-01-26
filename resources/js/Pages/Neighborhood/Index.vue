@@ -14,12 +14,10 @@
     </div>
 
     <div class="py-12">
-      <div class="max-w-7xl mx-auto xs:px-3 lg:px-8">
+      <div class="max-w-7xl mx-auto lg:px-8">
         <div class="lg:grid grid-cols-3 gap-4">
-            <Link v-for="post in posts.data" :key="post.id" :href="route('neighborhood.show', post.id)">
-          <PostCard :post="post" />
+          <PostCard v-for="post in posts.data" :key="post.id" :post="post" />
           <hr>
-            </Link>
         </div>
       </div>
     </div>

@@ -92,7 +92,7 @@
             </a>
             <SideBarLink
               :href="route('reservation-facilities.index')"
-              :active="route().current('reservation-facilities.*')"
+                :active="route().current('reservation-facilities.*')"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"

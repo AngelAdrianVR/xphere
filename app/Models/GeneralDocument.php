@@ -14,4 +14,10 @@ class GeneralDocument extends Model
         'description',
         'sphere_id',
     ];
+
+    //relationships
+    public function shpere()
+    {
+        return $this->belongsTo(Sphere::class);
+    }
 }

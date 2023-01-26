@@ -19,4 +19,10 @@ class Notice extends Model
     protected $dates = [ 
         'expired_date',
     ];
+
+    //relationships
+    public function sphere()
+    {
+        return $this->belongsTo(Sphere::class);
+    }
 }
