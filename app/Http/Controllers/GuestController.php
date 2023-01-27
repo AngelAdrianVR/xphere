@@ -88,6 +88,23 @@ class GuestController extends Controller
         return redirect()->route('guest.index');
     }
 
+    public function storeFavorite(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:50',
+            'notes' => 'max:100',
+            'brand_car' => 'nullable|max:100',
+            'plate_car' => 'nullable|max:8',
+        ]);
+
+        FavoriteGuest::create($request->all() + ['user_id'=>auth()->id()]);
+        
+        request()->session()->flash('flash.banner', 'Se ha creado tu visita en favoritos');
+        request()->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('guest.favorite');
+    }
+
     /**
      * Display the specified resource.
      *

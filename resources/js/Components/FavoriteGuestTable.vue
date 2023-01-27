@@ -28,7 +28,7 @@
         </thead>
 
         <tbody>
-          <tr v-for="favorite_guest in favorite_guests.data" :key="favorite_guest.id">
+          <tr v-for="(favorite_guest) in favorite_guests.data" :key="favorite_guest.id">
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
               <span class="ml-3 font-bold text-white text-lg"> {{ favorite_guest.name }} </span></th>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ favorite_guest.guest_type.name }}</td>
@@ -37,9 +37,8 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ favorite_guest.plate_car }}</td>
             <td class=" border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
               <div class="flex items-center">
-                <Link :href="route('guest.create')" class="text-blueGray-500 block py-1 px-3">
-                    <PrimaryButton class="">Programar</PrimaryButton></Link>
-                    <i title="Editar" class="fa-solid fa-pencil text-blue-400 mr-3 hover:text-blue-300"></i><i title="Eliminar" class="fa fa-trash text-red-400 hover:text-red-300"></i>
+                    <PrimaryButton @click="$inertia.post(route('guest.store', favorite_guest))" class="">Programar</PrimaryButton>
+                    <i title="Editar" class="fa-solid fa-pencil text-blue-400 mx-2 hover:text-blue-300"></i><i title="Eliminar" class="fa fa-trash text-red-400 hover:text-red-300"></i>
               </div>
             </td>
           </tr>
@@ -67,6 +66,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 export default {
   data(){
+
     return{
 
     }
