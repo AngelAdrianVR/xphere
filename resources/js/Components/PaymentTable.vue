@@ -36,14 +36,15 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ payment.expired_date }}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">${{ payment.amount }}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              <i class="fas fa-circle mr-2" :class="payment.status['color']"></i>{{ payment.status['text'] }}</td>
+              <i class="fas fa-circle mr-2" :class="payment.status['color']"></i>{{ payment.status['text'] }}
+            </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               <div>
                 <span>{{payment.payed_at}}</span>
               </div>
             </td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-              <a href="#" class="text-blueGray-500 block py-1 px-3 space-x-3">
+             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+              <a v-if="payment.status['text'] == 'Pendiente'" href="#" class="text-blueGray-500 block py-1 px-3 space-x-3">
                 <i class="fa-solid fa-pencil text-blue-300"></i><i class="fa fa-trash text-red-300"></i></a>
             </td>
           </tr>

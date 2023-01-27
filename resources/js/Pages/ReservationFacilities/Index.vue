@@ -14,7 +14,6 @@
           <div
     class="
       rounded-lg
-      cursor-pointer
       border-2 border-gray-200
       hover:border-cyan-600
       px-2
@@ -42,7 +41,7 @@
           <footer class="flex flex-col items-center">
               <h1 class="font-bold text-lg text-gray-700">Ubicación: {{ facility.location }}</h1>
               <p class="text-sm text-gray-700 text-center">Descripción: {{ facility.description }}</p>
-              <h1 class="font-bold text-lg text-green-700">Costo: ${{ facility.cost }}</h1>
+              <h1 class="font-bold text-lg text-green-700">Aportación: ${{ facility.cost }}</h1>
               <h1 class="font-bold text-lg text-gray-700">Horas Disponibles reservación: {{ facility.hours_available }}</h1>
             <div class="flex space-x-3 text-gray-600 mt-2">
               

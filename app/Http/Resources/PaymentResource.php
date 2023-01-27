@@ -14,21 +14,23 @@ class PaymentResource extends JsonResource
      */
     public function toArray($request)
     {
-        // $expired = now()->diffInDays($this->created_at) >= $this->expired_date;
-        // $status['text'] = "Pendiente";
-        // $status['color'] = "text-orange-500";
+    
+        $expired = now()->greaterThan($this->expired_date);
+        $status['text'] = "Pendiente";
+        $status['color'] = "text-orange-500";
 
-        // if ($this->payed_at){
-        //     $status['text'] = "Pagado";
-        //     $status['color'] = "text-green-500";
-        // }
+        if ($this->payed_at){
+            $status['text'] = "Pagado";
+            $status['color'] = "text-green-500";
+        }
             
-        // else if ($expired) {
-        //     if (!$this->payed_at){
-        //         $status['text'] = 'Expirado';
-        //         $status['color'] = "text-red-600";
-        //     } 
-        // }
+        else if ($expired) {
+            if (!$this->payed_at){
+                $status['text'] = 'Expirado';
+                $status['color'] = "text-red-600";
+            } 
+        }
+
 
         return [
             'id' => $this->id,
@@ -38,7 +40,7 @@ class PaymentResource extends JsonResource
             'amount' => number_format($this->amount),
             'description' => $this->description,
             'concept' => $this->concept,
-            'status' => $this->status,
+            'status' => $status,
             'user' => $this->whenLoaded('user'),
         ];
     }

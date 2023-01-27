@@ -29,14 +29,28 @@ Route::middleware([
     })->name('dashboard');
 });
 
-//User Routes
+// ---------------------------------- USER ROUTES ---------------------------------------
+//Neighborhood routes
 Route::resource('neighborhood', PostController::class)->middleware('auth');
+
+//Guest routes
 Route::resource('guest',GuestController::class)->except('show');
 Route::get('/guest/favorites',[GuestController::class, 'favorite'])->name('guest.favorite');
 Route::get('/guest/favorites/create',[GuestController::class, 'createFavorite'])->name('guest.create-favorite');
+Route::get('/guest/favorites/edit/{favorite_guest}',[GuestController::class, 'editFavorite'])->name('guest.edit-favorite');
+Route::put('/guest/favorites/update',[GuestController::class, 'updateFavorite'])->name('guest.update-favorite');
+Route::delete('/guest/favorites/delete',[GuestController::class, 'destroyFavorite'])->name('guest.delete-favorite');
 Route::get('/guest/events',[GuestController::class, 'event'])->name('guest.events');
 Route::post('/guest/favorites/store',[GuestController::class, 'storeFavorite'])->name('guest.store-favorite');
+
+//Payment routes
 Route::resource('payments',PaymentController::class);
+Route::get('/payments-history',[PaymentController::class, 'historyPayment'])->name('payments.history');
+
+
+
 Route::resource('reservation-facilities',ReservationFacilityController::class);
+//---------------------------------------------------------------------------------------------
+
 
 // Route::resource('facilities',FacilityController::class);

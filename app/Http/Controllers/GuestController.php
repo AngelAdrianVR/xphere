@@ -127,26 +127,51 @@ class GuestController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $guest
-     * @return \Illuminate\Http\Response
-     */
+    public function editFavorite(FavoriteGuest $favorite_guest)
+    {
+        // return $favorite_guest;
+        $guest_types = GuestType::all();
+        return inertia('Guest/EditFavorite',compact('favorite_guest','guest_types'));
+    }
+
     public function update(Request $request, $guest)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $guest
-     * @return \Illuminate\Http\Response
-     */
+    public function updateFavorite(Request $request, FavoriteGuest $favorite_guest)
+    {
+        // return $request;
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'notes' => 'max:100',
+            'brand_car' => 'nullable|max:100',
+            'plate_car' => 'nullable|max:8',
+        ]);
+
+        $favorite_guest->update($validated);
+        
+        request()->session()->flash('flash.banner', 'Se ha actualizado tu visita favorita');
+        request()->session()->flash('flash.bannerStyle', 'success');
+
+        return redirect()->route('guest.favorite');
+    }
+
+   
     public function destroy(Guest $guest)
     {
-        //
+        $guest->delete();
+        request()->session()->flash('flash.banner', '¡Se ha eliminado correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success'); 
+        return redirect()->route('guest.index');
+    }
+
+    public function destroyFavorite(FavoriteGuest $favorite_guest)
+    {
+        return $favorite_guest;
+        $favorite_guest->delete();
+        request()->session()->flash('flash.banner', '¡Se ha eliminado correctamente!');
+        request()->session()->flash('flash.bannerStyle', 'success'); 
+        return redirect()->route('guest.favorite');
     }
 }

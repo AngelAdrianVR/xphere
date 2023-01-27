@@ -38,7 +38,8 @@
             <td class=" border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
               <div class="flex items-center">
                     <PrimaryButton @click="$inertia.post(route('guest.store', favorite_guest))" class="">Programar</PrimaryButton>
-                    <i title="Editar" class="fa-solid fa-pencil text-blue-400 mx-2 hover:text-blue-300"></i><i title="Eliminar" class="fa fa-trash text-red-400 hover:text-red-300"></i>
+                    <Link :href="route('guest.edit-favorite', favorite_guest.id)"><i title="Editar" class="fa-solid fa-pencil text-blue-400 mx-2 hover:text-blue-300"></i></Link>
+                    <button @click="delete_confirm = true; item_to_delete = favorite_guest;"><i title="Eliminar" class="fa fa-trash text-red-400 hover:text-red-300"></i></button>
               </div>
             </td>
           </tr>
@@ -47,39 +48,58 @@
     </div>
   </div>
 </div>
-    <!-- <footer class="relative pt-8 pb-6 mt-8">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-wrap items-center md:justify-between justify-center">
-          <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-            creado por xphere.com
-          </div>
-        </div>
-      </div>
-    </footer> -->
 </section>
     </div>
+    <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
+    <template #title>
+      <div>¿Deseas continuar?</div>
+    </template>
+    <template #content>
+      <div>
+        Estás a punto de eliminar el registro de favoritos. Una vez realizado ya no se podrá
+        recuperar.
+      </div>
+    </template>
+    <template #footer>
+      <div class="flex justify-end">
+        <button @click="this.delete()" class="px-2 py-1 font-semibold border rounded border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition duration-200 mr-2">Eliminar</button>
+        <button class="px-2 py-1 font-semibold border rounded border-gray-500 text-gray-500 hover:bg-gray-100 transition duration-200" @click="delete_confirm = false">
+          Cancelar
+        </button>
+      </div>
+    </template>
+  </ConfirmationModal>
 </template>
 
 <script>
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import ConfirmationModal from "@/Components/ConfirmationModal.vue";
+
 
 export default {
   data(){
 
     return{
-
+      delete_confirm: false,
+      item_to_delete: {},
     }
   },
   components:{
     Link,
     PrimaryButton,
+    ConfirmationModal,
   },
   props:{
     favorite_guests: Object,
   },
   methods:{
-    
+    delete() {
+      this.$inertia.delete(
+        this.route("guest.delete-favorite", this.item_to_delete)
+      );
+      this.delete_confirm = false;
+    },
   },
 }
 </script>
