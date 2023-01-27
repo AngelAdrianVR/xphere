@@ -21,16 +21,19 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $payments = PaymentResource::collection(Payment::with('user')->latest()->get());
+        $payments = PaymentResource::collection(auth()->user()->payments()->whereNull('payed_at')->with('user')->latest()->get());
         // return $payments;
         return Inertia::render('Payment/Index',compact('payments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function historyPayment()
+    {
+        $payments = PaymentResource::collection(auth()->user()->payments()->with('user')->latest()->get());
+        // return $payments;
+        return Inertia::render('Payment/History',compact('payments'));
+    }
+
+
     public function create()
     {
         //

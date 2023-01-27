@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->date('payed_at');
-            $table->date('expired_date');
-            $table->unsignedFloat('amount');
-            $table->text('description');
             $table->string('concept');
-            $table->unsignedTinyInteger('status');
+            $table->text('description')->nullable();
+            $table->unsignedFloat('amount');
+            // $table->unsignedTinyInteger('status')->default(1); Status propertie is calculated
+            $table->date('payed_at')->nullable();
+            $table->date('expired_date')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

@@ -1,5 +1,5 @@
 <template>
-  <AppLayout title="Pagos Pendientes">
+  <AppLayout title="Historial de pagos">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">PAGOS</h2>
     </template>
@@ -9,7 +9,7 @@
     </div>
 
     <div>
-      <PaymentCard v-for="payment in payments.data" :key="payment.id" :payment="payment" />
+      <PaymentTable :payments="payments" />
     </div>
   </AppLayout>
 </template>
@@ -18,7 +18,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
-import PaymentCard from "@/Components/Cards/PaymentCard.vue";
+import PaymentTable from "@/Components/PaymentTable.vue";
 import Tabs from "@/Components/Tabs.vue";
 
 export default {
@@ -42,8 +42,8 @@ export default {
     Link,
     PrimaryButton,
     SecondaryButton,
+    PaymentTable,
     Tabs,
-    PaymentCard,
   },
 
   props: {
