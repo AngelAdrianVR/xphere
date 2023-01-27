@@ -9,7 +9,7 @@
     </div>
 
     <div class="flex justify-end">
-      <Link :href="route('guest.createFavorite')">
+      <Link :href="route('guest.create-favorite')">
         <SecondaryButton class="mr-7 my-4">Agregar</SecondaryButton>
       </Link>
     </div>
@@ -41,6 +41,10 @@ export default {
         {
           label: "Favoritos",
           url: "guest.favorite",
+        },
+        {
+          label: "Eventos",
+          url: "guest.events",
         },
       ],
     };

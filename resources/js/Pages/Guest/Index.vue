@@ -41,6 +41,10 @@ export default {
           label: "Favoritos",
           url: "guest.favorite",
         },
+        {
+          label: "Eventos",
+          url: "guest.events",
+        },
       ],
     };
   },
