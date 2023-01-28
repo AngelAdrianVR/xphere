@@ -26,7 +26,7 @@
     v-for="facility in facilities.data" :key="facility.id"
   >
   <div class="flex justify-center items-center my-2 uppercase font-bold">
-          <i class="fa-solid fa-house text-lg mr-2 text-gray-800"></i>
+          <i class="fa-solid fa-building text-lg mr-2 text-gray-800"></i>
           <div class="flex justify-center">
             <span>{{facility.name }}</span>
             <span>{{facility_id }}</span>
@@ -40,7 +40,7 @@
         </div>
           <footer class="flex flex-col items-center">
               <h1 class="font-bold text-lg text-gray-700">Ubicación: {{ facility.location }}</h1>
-              <p class="text-sm text-gray-700 text-center">Descripción: {{ facility.description }}</p>
+              <p class="text-sm text-gray-700 text-center">{{ facility.description }}</p>
               <h1 class="font-bold text-lg text-green-700">Aportación: ${{ facility.cost }}</h1>
               <h1 class="font-bold text-lg text-gray-700">Horas Disponibles reservación: {{ facility.hours_available }}</h1>
             <div class="flex space-x-3 text-gray-600 mt-2">

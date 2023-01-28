@@ -48,4 +48,16 @@ class Sphere extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function internalServices()
+    {
+        return $this->hasMany(InternalServices::class);
+    }
+
+    public function externalServices()
+    {
+        return $this->hasMany(ExternalServices::class);
+    }
+
+
 }
