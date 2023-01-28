@@ -28,7 +28,7 @@
         </thead>
 
         <tbody>
-          <tr v-for="(favorite_guest) in favorite_guests.data" :key="favorite_guest.id">
+          <tr v-for="favorite_guest in favorite_guests.data" :key="favorite_guest.id">
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
               <span class="ml-3 font-bold text-white text-lg"> {{ favorite_guest.name }} </span></th>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ favorite_guest.guest_type.name }}</td>

@@ -23,12 +23,11 @@
             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700">Monto</th>
             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700">Status</th>
             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700">Fecha de pagado</th>
-            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700"></th>
           </tr>
         </thead>
 
         <tbody>
-          <tr v-for="(payment) in payments.data" :key="payment.id">
+          <tr v-for="payment in payments.data" :key="payment.id">
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
               <span class="ml-3 font-bold text-white text-lg"> {{ payment.concept }} </span></th>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ payment.description }}</td>
@@ -43,10 +42,6 @@
                 <span>{{payment.payed_at}}</span>
               </div>
             </td>
-             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-              <a v-if="payment.status['text'] == 'Pendiente'" href="#" class="text-blueGray-500 block py-1 px-3 space-x-3">
-                <i class="fa-solid fa-pencil text-blue-300"></i><i class="fa fa-trash text-red-300"></i></a>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -55,14 +50,22 @@
 </div>
 </section>
     </div>
+ 
 </template>
 
 <script>
+import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+
 export default {
   data(){
     return{
 
     }
+  },
+  components:{
+    Link,
+    PrimaryButton,
   },
   props:{
     payments: Object,

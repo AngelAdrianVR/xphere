@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ExternalServicesController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\InternalServicesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationFacilityController;
@@ -47,9 +49,12 @@ Route::post('/guest/favorites/store',[GuestController::class, 'storeFavorite'])-
 Route::resource('payments',PaymentController::class);
 Route::get('/payments-history',[PaymentController::class, 'historyPayment'])->name('payments.history');
 
-
-
+//Reservation Facilities routes
 Route::resource('reservation-facilities',ReservationFacilityController::class);
+
+//Services routes
+Route::resource('internal-services',InternalServicesController::class);
+Route::resource('external-services',ExternalServicesController::class);
 //---------------------------------------------------------------------------------------------
 
 

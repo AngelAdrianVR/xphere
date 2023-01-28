@@ -452,19 +452,15 @@ const logout = () => {
                 :href="route('dashboard')"
                 :active="false"
               >
-              <svg
-                class="w-6 h-6 fill-current inline-block"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+              <i class="fa-solid fa-headset text-lg"></i>
+                 Administración
+              </ResponsiveNavLink>
+              <ResponsiveNavLink
+                :href="route('internal-services.index')"
+                :active="route().current('internal-services.*')"
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-                Servicios Externos
+              <i class="fa-solid fa-people-group text-lg"></i>
+                 Servicios
               </ResponsiveNavLink>
             </div>
 
