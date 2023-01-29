@@ -449,11 +449,23 @@ const logout = () => {
                 Reservación de Areas
               </ResponsiveNavLink>
               <ResponsiveNavLink
-                :href="route('dashboard')"
-                :active="false"
+              :href="route('general.index')"
+              :active="route().current('general.*')"
               >
-              <i class="fa-solid fa-headset text-lg"></i>
-                 Administración
+              <!-- <i class="fa-solid fa-headset text-lg"></i> -->
+              <svg
+                class="w-6 h-6 fill-current inline-block"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+                 Generales
               </ResponsiveNavLink>
               <ResponsiveNavLink
                 :href="route('internal-services.index')"
