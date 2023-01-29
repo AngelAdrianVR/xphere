@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExternalServicesController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\InternalServicesController;
 use App\Http\Controllers\PaymentController;
@@ -55,6 +56,9 @@ Route::resource('reservation-facilities',ReservationFacilityController::class);
 //Services routes
 Route::resource('internal-services',InternalServicesController::class);
 Route::resource('external-services',ExternalServicesController::class);
+
+//General and intern stuffs
+Route::resource('general', GeneralController::class);
 //---------------------------------------------------------------------------------------------
 
 

@@ -109,11 +109,11 @@
               <span class="ml-1"> Reservación de Areas</span>
             </SideBarLink>
             <SideBarLink
-              :href="route('dashboard')"
-              :active="false"
+              :href="route('general.index')"
+              :active="route().current('general.*')"
             >
-            <i class="fa-solid fa-headset text-xl"></i>
-              <!-- <svg
+            <!-- <i class="fa-solid fa-headset text-xl"></i> -->
+              <svg
                 class="w-6 h-6 fill-current inline-block"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -124,8 +124,8 @@
                   d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                   clip-rule="evenodd"
                 ></path>
-              </svg> -->
-              <span class="ml-1"> Administración</span>
+              </svg>
+              <span class="ml-1"> Generales</span>
             </SideBarLink>
             <SideBarLink
               :href="route('internal-services.index')"

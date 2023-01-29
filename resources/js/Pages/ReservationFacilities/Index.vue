@@ -9,7 +9,7 @@
     <div class="py-5">
       <div class="max-w-7xl mx-auto lg:px-8">
         <div class="lg:grid grid-cols-3 gap-4">
-          <FacilityCard v-for="facility in facilities.data" :key="facility.id" :facility="facility"/>
+         <FacilityCard2 v-for="facility in facilities.data" :key="facility.id" :facility="facility" />
         </div>
       </div>
     </div>
@@ -19,6 +19,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import FacilityCard from "@/Components/Cards/FacilityCard.vue";
+import FacilityCard2 from "@/Components/Cards/FacilityCard2.vue";
 
 export default {
   data() {
@@ -30,6 +31,7 @@ export default {
     AppLayout,
     Link,
     FacilityCard,
+    FacilityCard2,
   },
 
   props: {

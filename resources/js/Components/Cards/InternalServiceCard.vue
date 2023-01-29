@@ -14,9 +14,11 @@
             alt=""
           />
           <div class="text-center mt-2 text-3xl font-medium">{{internal_service.name}}</div>
-          <div class="text-center font-normal text-sm">Num. cóntacto: {{internal_service.phone}}</div>
-          <div class="px-6 text-center mt-2 font-light text-sm">
-            <p>{{internal_service.description}}</p>
+          <div class="text-center font-normal text-sm"><i class="fa-solid fa-phone text-gray-600"></i><i class="fa-brands fa-whatsapp ml-1 text-green-600"></i> {{internal_service.phone}}</div>
+          <div class="bg-gray-300 mx-2 pb-1 rounded-lg text-gray-700 py-1 my-1">
+            <div class="px-6 text-center mt-2 font-light text-sm">
+              <p>{{internal_service.description}}</p>
+            </div>
           </div>
           <hr class="mt-8" />
           <div class="flex p-4">
