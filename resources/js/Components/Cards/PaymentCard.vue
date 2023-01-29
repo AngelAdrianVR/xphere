@@ -11,7 +11,7 @@
     "
   >
         <div class="bg-gray-200 shadow-md rounded-md px-2 py-3">
-        <!-- <Link :href="route('neighborhood.show', payments.id)"> -->
+        <!-- <Link :href="route('neighborhood.show', payments.id)"> --> 
           <main class="grid grid-cols-3">
             <div class="col-span-2">
               <h1 class="font-bold text-lg text-gray-700">{{ payment.concept }}</h1>

@@ -10,7 +10,9 @@ class ExternalServicesController extends Controller
 
     public function index()
     {
-        return inertia('Services/External/Index');
+        $sphere_id = auth()->user()->sphere_id;
+        $external_services = ExternalServices::where('sphere_id', $sphere_id)->get();
+        return inertia('Services/External/Index',compact('external_services'));
     }
 
     
