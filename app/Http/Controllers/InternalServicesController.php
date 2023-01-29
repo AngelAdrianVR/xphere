@@ -10,7 +10,9 @@ class InternalServicesController extends Controller
   
     public function index()
     {
-        return inertia('Services/Internal/Index');
+        $sphere_id = auth()->user()->sphere_id;
+        $internal_services = InternalServices::where('sphere_id', $sphere_id)->get();
+        return inertia('Services/Internal/Index',compact('internal_services'));
     }
 
    

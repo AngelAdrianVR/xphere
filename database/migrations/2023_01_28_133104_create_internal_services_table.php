@@ -18,6 +18,7 @@ return new class extends Migration
             
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('phone');
             $table->foreignId('sphere_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();

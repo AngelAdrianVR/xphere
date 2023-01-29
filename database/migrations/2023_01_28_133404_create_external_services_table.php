@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('website')->nullable();
             $table->text('social_networks')->nullable();
+            $table->foreignId('sphere_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });
