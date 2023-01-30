@@ -10,7 +10,7 @@
       bg-transparet
     "
   >
-        <div class="bg-gray-200 shadow-md rounded-md px-2 py-3">
+        <div class="bg-gray-200 shadow-md rounded-md px-2 py-3 border-dashed border-2 border-gray-400">
         <!-- <Link :href="route('neighborhood.show', payments.id)"> --> 
           <main class="grid grid-cols-3">
             <div class="col-span-2">
