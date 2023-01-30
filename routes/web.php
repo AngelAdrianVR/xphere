@@ -59,6 +59,12 @@ Route::resource('external-services',ExternalServicesController::class);
 
 //General and intern stuffs
 Route::resource('general', GeneralController::class);
+Route::get('/general-documents', [GeneralController::class,'documents'])->name('general.documents');
+Route::get('/general-guard-house-chat', [GeneralController::class,'guardHouseChat'])->name('general.guard-house-chat');
+Route::get('/general-report-incident', [GeneralController::class,'reportIncident'])->name('general.report-incident');
+Route::get('/general-surveys', [GeneralController::class,'surveys'])->name('general.surveys');
+Route::get('/general-permissions', [GeneralController::class,'permissions'])->name('general.permissions');
+Route::get('/general-suggestions', [GeneralController::class,'suggestions'])->name('general.suggestions');
 //---------------------------------------------------------------------------------------------
 
 
