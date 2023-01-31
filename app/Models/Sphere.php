@@ -59,5 +59,14 @@ class Sphere extends Model
         return $this->hasMany(ExternalServices::class);
     }
 
+    public function incidents()
+    {
+        return $this->hasMany(Incident::class);
+    }
+
+    public function permissionTypes()
+    {
+        return $this->hasMany(PermissionType::class);
+    }
 
 }

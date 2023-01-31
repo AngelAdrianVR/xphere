@@ -16,7 +16,6 @@ class FavoriteGuest extends Model
         'brand_car',
         'guest_type_id',
         'user_id',
-        'arrived_time', //timezone not date
     ];
 
     //relationships

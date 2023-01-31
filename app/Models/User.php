@@ -105,4 +105,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(FavoriteGuest::class);
     }
+
+    public function incidents()
+    {
+        return $this->hasMany(Incident::class);
+    }
+
+    public function residentPermissions()
+    {
+        return $this->hasMany(ResidentPermission::class);
+    }
 }

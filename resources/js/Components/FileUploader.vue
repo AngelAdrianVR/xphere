@@ -1,6 +1,15 @@
 <template>
   <div
-    class="my-3 py-6 px-6 bg-gray-100 dark:bg-slate-700 dark:border-slate-500 dark:text-gray-300 border border-dashed rounded-md border-gray-300"
+    class="
+      my-3
+      py-6
+      px-6
+      bg-gray-300
+      dark:bg-slate-700 dark:border-slate-500 dark:text-gray-500
+      border-2 border-dashed
+      rounded-md
+      border-gray-400
+    "
     @dragover="dragover"
     @dragleave="dragleave"
     @drop="drop"
@@ -16,19 +25,32 @@
       accept=".pdf,.jpg,.jpeg,.png,.xls,.ppt,.zip,.doc,.docx,.xslx,.txt"
     />
 
-    <label for="assetsFieldHandle" class="block cursor-pointer text-sm text-center">
-      Arrastra tus archivos o da <span class="underline">click aqui</span> para
+    <label
+      for="assetsFieldHandle"
+      class="block cursor-pointer text-sm text-center"
+    >
+      <span class="lg:block hidden"> Arrastra tus archivos o </span> Da <span class="underline">click aqui</span> para
       abrir el explorador de carpetas
     </label>
-    <ul class="mt-4 lg:grid grid-cols-3 text-center" v-if="this.filelist.length" v-cloak>
-      <li v-for="(file, index) in filelist" :key="index" class="text-xs text-sky-500 p-1">
+    <ul
+      class="mt-4 lg:grid grid-cols-3 text-center"
+      v-if="this.filelist.length"
+      v-cloak
+    >
+      <li
+        v-for="(file, index) in filelist"
+        :key="index"
+        class="text-xs text-sky-500 p-1"
+      >
         {{ file.name }}
         <button
           type="button"
           @click="remove(filelist.indexOf(file))"
           title="Remover archivo"
         >
-          <span class="text-gray-500 ml-2 font-bold text-lg hover:text-red-500">x</span>
+          <span class="text-gray-500 ml-2 font-bold text-lg hover:text-red-500"
+            >x</span
+          >
         </button>
       </li>
     </ul>

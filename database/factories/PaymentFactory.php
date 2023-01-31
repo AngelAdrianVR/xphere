@@ -22,7 +22,6 @@ class PaymentFactory extends Factory
             'amount' => $this->faker->numberBetween(300,1200),
             'description' => $this->faker->text(50),
             'concept' => $this->faker->word(),
-            'status' => $this->faker->numberBetween(1,4),
             'user_id' => $this->faker->numberBetween(1,10),
         ];
     }
