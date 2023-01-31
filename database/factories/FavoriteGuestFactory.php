@@ -21,7 +21,6 @@ class FavoriteGuestFactory extends Factory
             'name' => $this->faker->name(),
             'plate_car' => 'asdfghjk',
             'notes' =>$this->faker->word(),
-            'arrived_at' => now()->toTimeString(),
             'guest_type_id' =>$this->faker->numberBetween(1,5),
             'user_id' =>$this->faker->numberBetween(1,10),
         ];

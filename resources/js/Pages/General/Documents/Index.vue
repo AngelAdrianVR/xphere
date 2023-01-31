@@ -2,7 +2,7 @@
   <AppLayout title="Documentos Generales">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        GENERAL / Documentos del Fraccionamiento
+        Documentos del Fraccionamiento
       </h2>
     </template>
 

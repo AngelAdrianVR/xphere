@@ -73,7 +73,7 @@
             </SideBarLink>
             <a
               :href="route('chatify')"
-              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-slate-700 to-teal-500 hover:text-white rounded-lg transition"
+              class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gradient-to-r from-slate-700 to-teal-500 hover:text-white rounded-lg"
             >
               <svg
                 class="w-6 h-6 fill-current inline-block"

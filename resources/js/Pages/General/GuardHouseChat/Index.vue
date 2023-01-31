@@ -2,7 +2,7 @@
   <AppLayout title="Chat con Caseta">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        GENERAL / Chat con Caseta
+        Chat con Caseta
       </h2>
     </template>
 

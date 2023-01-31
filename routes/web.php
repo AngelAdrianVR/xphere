@@ -4,10 +4,12 @@ use App\Http\Controllers\ExternalServicesController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\InternalServicesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationFacilityController;
+use App\Http\Controllers\ResidentPermissionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -57,7 +59,7 @@ Route::resource('reservation-facilities',ReservationFacilityController::class);
 Route::resource('internal-services',InternalServicesController::class);
 Route::resource('external-services',ExternalServicesController::class);
 
-//General and intern stuffs
+//General and intern stuffs routes
 Route::resource('general', GeneralController::class);
 Route::get('/general-documents', [GeneralController::class,'documents'])->name('general.documents');
 Route::get('/general-guard-house-chat', [GeneralController::class,'guardHouseChat'])->name('general.guard-house-chat');
@@ -65,6 +67,13 @@ Route::get('/general-report-incident', [GeneralController::class,'reportIncident
 Route::get('/general-surveys', [GeneralController::class,'surveys'])->name('general.surveys');
 Route::get('/general-permissions', [GeneralController::class,'permissions'])->name('general.permissions');
 Route::get('/general-suggestions', [GeneralController::class,'suggestions'])->name('general.suggestions');
+
+//Incidents routes
+Route::resource('incidents', IncidentController::class);
+
+//Resident permissions routes
+Route::resource('resident-permissions', ResidentPermissionController::class);
+
 //---------------------------------------------------------------------------------------------
 
 
