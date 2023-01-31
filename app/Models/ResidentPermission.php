@@ -10,10 +10,15 @@ class ResidentPermission extends Model
     use HasFactory;
 
     protected $fillable = [
+        'date',
         'subject',
         'description',
         'permission_type_id',
         'user_id',
+    ];
+
+    protected $dates = [
+        'date',
     ];
 
     //relationships

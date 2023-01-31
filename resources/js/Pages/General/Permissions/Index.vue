@@ -2,20 +2,16 @@
   <AppLayout title="Permisos">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Solicitar Permisos
+        Permisos
       </h2>
     </template>
 
-    <AlertInfo>
-      <template #title>
-        ATENCIÓN
-      </template>
-      <template #info>
-        Los Permisos serán respondidos en un plazo de 3 días hábiles. En caso de no ser respondido,
-        pasar a administración a dar seguimiento. Gracias!
-      </template>
-    </AlertInfo>
-  
+  <div class="flex justify-start ml-2">
+      <Link :href="route('general.index')" class="flex items-center mt-2 text-slate-700">
+        <i class="fas fa-long-arrow-alt-left text-lg hover:bg-gray-200 rounded-full w-7 h-7 pl-1"></i>
+        <span class="ml-1 cursor-default">Atrás</span>
+      </Link>
+    </div>  
 
 <div class="flex justify-end">
       <Link :href="route('resident-permissions.create')">

@@ -16,14 +16,15 @@
     <div class="max-w-2xl md:mx-auto mt-5 shadow-md shadow-gray-500/70 rounded-lg px-5 py-8 bg-gray-200 mx-4">
 	<form @submit.prevent="store">
 
-		<div class="relative z-0 mb-6 w-full group">
-			<input v-model="form.title" type="text" name="floating_title" autocomplete="off" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder=" " required />
-			<label for="floating_title" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-cyan-600 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Título</label>
-      <InputError :message="$page.props?.errors.title" />
-		</div>
+    <FloatingInput v-model="form.title" type="text">
+        <template #label>
+            Título
+        </template>
+       </FloatingInput>
+       <InputError :message="$page.props?.errors.title" />
 
 		<div class="relative z-0 mb-6 w-full group">
-			<input v-model="form.content" type="text" name="floating_content" autocomplete="off" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder=" " required />
+			<textarea v-model="form.content" type="text" rows="4" name="floating_content" autocomplete="off" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder=" " required />
 			<label for="floating_content" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-cyan-600 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contenido</label>
       <InputError :message="$page.props?.errors.content" />
     </div>
@@ -47,6 +48,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import FileUploader from "@/Components/FileUploader.vue";
 import InputError from "@/Components/InputError.vue";
 import { Link, useForm } from "@inertiajs/inertia-vue3";
+import FloatingInput from '@/Components/FloatingInput.vue'
 
 export default {
     data() {
@@ -65,6 +67,8 @@ export default {
     PrimaryButton,
     FileUploader,
     InputError,
+    FloatingInput,
+
   },
   props: {
   },
