@@ -15,8 +15,16 @@
 
 <div class="flex justify-end">
       <Link :href="route('resident-permissions.create')">
-      <SecondaryButton class="mr-7 my-5">Solicitar Permiso</SecondaryButton>
+      <SecondaryButton class="mr-7 my-1">Solicitar Permiso</SecondaryButton>
       </Link>
+    </div>
+
+    <div class="py-8">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <div class="lg:grid grid-cols-3 gap-4">
+          <PermissionCard v-for="resident_permission in resident_permissions.data" :key="resident_permission.id" :resident_permission="resident_permission" />
+        </div>
+      </div>
     </div>
 
   </AppLayout>
@@ -26,6 +34,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import AlertInfo from '@/Components/AlertInfo.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
+import PermissionCard from '@/Components/Cards/PermissionCard.vue'
 
 export default {
   data() {
@@ -38,9 +47,11 @@ export default {
     Link,
     AlertInfo,
     SecondaryButton,
+    PermissionCard,
   },
 
   props: {
+    resident_permissions: Object,
   },
 
   methods: {
