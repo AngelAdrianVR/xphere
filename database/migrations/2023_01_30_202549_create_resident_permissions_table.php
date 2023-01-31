@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('resident_permissions', function (Blueprint $table) {
             $table->id();
             
+            $table->date('date');
             $table->string('subject');
             $table->text('description');
             $table->foreignId('permission_type_id')->constrained()->cascadeOnDelete();
