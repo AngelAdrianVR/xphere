@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ResidentPermissionResource;
+use App\Models\ResidentPermission;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -33,7 +35,10 @@ class GeneralController extends Controller
 
     public function permissions()
     {
-        return inertia('General/Permissions/Index');
+        $user_id = auth()->id();
+        $resident_permissions = ResidentPermissionResource::collection(ResidentPermission::where('user_id', $user_id)->with('permissionType')->get());
+        // return $resident_permissions;
+        return inertia('General/Permissions/Index', compact('resident_permissions'));
     }
 
     public function suggestions()

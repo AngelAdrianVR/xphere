@@ -17,7 +17,6 @@
       <div class="max-w-7xl mx-auto lg:px-8">
         <div class="lg:grid grid-cols-3 gap-4">
           <PostCard v-for="post in posts.data" :key="post.id" :post="post" />
-          <hr>
         </div>
       </div>
     </div>

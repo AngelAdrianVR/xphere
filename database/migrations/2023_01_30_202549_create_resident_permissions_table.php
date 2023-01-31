@@ -19,6 +19,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('subject');
             $table->text('description');
+            $table->date('replied_at')->nullable();
+            $table->boolean('is_accepted')->nullable();
             $table->foreignId('permission_type_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
 

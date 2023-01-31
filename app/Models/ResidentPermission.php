@@ -11,14 +11,17 @@ class ResidentPermission extends Model
 
     protected $fillable = [
         'date',
+        'replied_at',
         'subject',
         'description',
         'permission_type_id',
         'user_id',
+        'is_accepted',
     ];
 
     protected $dates = [
         'date',
+        'replied_at',
     ];
 
     //relationships
