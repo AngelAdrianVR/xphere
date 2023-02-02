@@ -109,6 +109,14 @@
               <span class="ml-1"> Reservación de Areas</span>
             </SideBarLink>
             <SideBarLink
+              :href="route('internal-services.index')"
+              :active="route().current('internal-services.*')"
+            >
+            <i class="fa-solid fa-people-group text-xl"></i>
+              
+              <span class="ml-1"> Servicios</span>
+            </SideBarLink>
+            <SideBarLink
               :href="route('general.index')"
               :active="route().current('general.*')"
             >
@@ -126,14 +134,6 @@
                 ></path>
               </svg>
               <span class="ml-1"> Generales</span>
-            </SideBarLink>
-            <SideBarLink
-              :href="route('internal-services.index')"
-              :active="route().current('internal-services.*')"
-            >
-            <i class="fa-solid fa-people-group text-xl"></i>
-              
-              <span class="ml-1"> Servicios</span>
             </SideBarLink>
             <SideBarLink
               :href="route('dashboard')"

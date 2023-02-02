@@ -449,6 +449,14 @@ const logout = () => {
                 Reservación de Areas
               </ResponsiveNavLink>
               <ResponsiveNavLink
+                :href="route('internal-services.index')"
+                :active="route().current('internal-services.*')"
+              >
+              <i class="fa-solid fa-people-group text-lg"></i>
+                 Servicios
+              </ResponsiveNavLink>
+            </div>
+            <ResponsiveNavLink
               :href="route('general.index')"
               :active="route().current('general.*')"
               >
@@ -467,14 +475,6 @@ const logout = () => {
               </svg>
                  Generales
               </ResponsiveNavLink>
-              <ResponsiveNavLink
-                :href="route('internal-services.index')"
-                :active="route().current('internal-services.*')"
-              >
-              <i class="fa-solid fa-people-group text-lg"></i>
-                 Servicios
-              </ResponsiveNavLink>
-            </div>
 
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200">
