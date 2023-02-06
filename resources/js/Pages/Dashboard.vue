@@ -17,10 +17,10 @@
 
       <!-- ---------------------------PAYMENTS---------------------------- -->
       <Link :href="route('payments.index')">
-        <div
+        <div 
           class="w-56 h-56 rounded-full border-8 hover:ring-2 ring-offset-1 ring-green-600 border-green-500 absolute sm:bottom-[40%] bottom-[50%] sm:right-[40%] right-[21%] flex justify-center items-center"
         >
-          <p class="text-gray-500 font-semibold">Tiene 0 Pagos pendientes</p>
+          <p class="text-gray-500 font-semibold">Tiene {{pendent_payments.data.length}} Pago(s) pendientes</p>
         </div>
       </Link>
       <!-- ---------------------------PANIC BUTTON---------------------------- -->
@@ -116,14 +116,28 @@
 <!-- -------------------------PROGRAMED GUESTS------------------------ -->
 <h1 class="text-lg font-bold text-gray-500 text-center mt-7">Visitas programadas para hoy</h1>
 
-    <!-- <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class=" overflow-hidden shadow-xl sm:rounded-lg">
-                    
-                </div>
-            </div>
-        </div> -->
+    <div v-if="guests.data.length" class="py-4">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <div class="lg:grid grid-cols-3 gap-4">
+          <GuestCard v-for="guest in guests.data" :key="guest.id" :guest="guest" />
+        </div>
+      </div>
     </div>
+    <p v-else class="text-gray-600 text-center">No tienes visitas programadas.</p>
+
+<!-- -------------------------FACILITY RESERVATIONS------------------------ -->
+<h1 class="text-lg font-bold text-gray-500 text-center mt-7">Reservaciones de Áreas</h1>
+
+    <div v-if="guests.data.length" class="py-4">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <div class="lg:grid grid-cols-3 gap-4">
+          <GuestCard v-for="guest in guests.data" :key="guest.id" :guest="guest" />
+        </div>
+      </div>
+    </div>
+    <p v-else class="text-gray-600 text-center">No tienes reservaciones pendientes.</p>
+
+  </div>
   </AppLayout>
 </template>
 
@@ -132,6 +146,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import InformationGlobe from "@/Components/InformationGlobe.vue"; 
 import PrimaryButton from "@/Components/PrimaryButton.vue"; 
+import GuestCard from "@/Components/Cards/GuestCard.vue"; 
 export default {
   data() {
     return {};
@@ -139,12 +154,16 @@ export default {
   props: {
     sphere: Object,
     user: Object,
+    guests: Object,
+    pendent_payments: Object,
+    
   },
   components: {
     AppLayout,
     Link,
     InformationGlobe,
     PrimaryButton,
+    GuestCard,
   },
 };
 </script>

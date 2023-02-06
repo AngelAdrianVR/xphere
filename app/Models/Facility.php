@@ -13,6 +13,7 @@ class Facility extends Model
         'name',
         'location',
         'description',
+        'capacity',
         'cost',
         'hours_available',
         'sphere_id',  
