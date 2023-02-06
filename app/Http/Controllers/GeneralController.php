@@ -37,7 +37,6 @@ class GeneralController extends Controller
     {
         $user_id = auth()->id();
         $resident_permissions = ResidentPermissionResource::collection(ResidentPermission::where('user_id', $user_id)->with('permissionType')->get());
-        // return $resident_permissions;
         return inertia('General/Permissions/Index', compact('resident_permissions'));
     }
 

@@ -9,7 +9,7 @@
     </div>
 
     <div class="flex justify-end">
-      <Link :href="route('guest.create-favorite')">
+      <Link :href="route('favorite-guests.create')">
         <SecondaryButton class="mr-7 my-4">Agregar</SecondaryButton>
       </Link>
     </div>
@@ -40,7 +40,7 @@ export default {
         },
         {
           label: "Favoritos",
-          url: "guest.favorite",
+          url: "favorite-guests.index",
         },
         {
           label: "Eventos",
@@ -63,8 +63,8 @@ export default {
 
   props: {
     favorite_guests: Object,
-    filters: Object,
-    filterURL: String,
+    // filters: Object,
+    // filterURL: String,
   },
 
   methods: {},

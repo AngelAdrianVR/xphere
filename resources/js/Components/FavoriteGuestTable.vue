@@ -1,7 +1,4 @@
 <template>
-    <div>
-        <!-- component -->
-
 <section class="relative">
 
 <div class="w-full px-4">
@@ -37,9 +34,9 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ favorite_guest.plate_car }}</td>
             <td class=" border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
               <div class="flex items-center">
-                    <PrimaryButton @click="$inertia.post(route('guest.store', favorite_guest))" class="">Programar</PrimaryButton>
-                    <Link :href="route('guest.edit-favorite', favorite_guest.id)"><i title="Editar" class="fa-solid fa-pencil text-blue-400 mx-2 hover:text-blue-300"></i></Link>
-                    <button @click="delete_confirm = true; item_to_delete = favorite_guest;"><i title="Eliminar" class="fa fa-trash text-red-400 hover:text-red-300"></i></button>
+                    <PrimaryButton @click="$inertia.post(route('favorite-guests.program-guest', favorite_guest))" class="">Programar</PrimaryButton>
+                    <Link :href="route('favorite-guests.edit', favorite_guest.id)"><i title="Editar" class="fa-solid fa-pencil hover:text-blue-600 mx-2"></i></Link>
+                    <button @click="delete_confirm = true; item_to_delete = favorite_guest;"><i title="Eliminar" class="fa fa-trash hover:text-red-600 mx-2"></i></button>
               </div>
             </td>
           </tr>
@@ -49,7 +46,6 @@
   </div>
 </div>
 </section>
-    </div>
     <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
     <template #title>
       <div>¿Deseas continuar?</div>
@@ -96,7 +92,7 @@ export default {
   methods:{
     delete() {
       this.$inertia.delete(
-        this.route("guest.delete-favorite", this.item_to_delete)
+        this.route("favorite-guests.destroy", this.item_to_delete)
       );
       this.delete_confirm = false;
     },

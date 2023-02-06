@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExternalServicesController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\FavoriteGuestController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\IncidentController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationFacilityController;
 use App\Http\Controllers\ResidentPermissionController;
+use App\Http\Controllers\SuggestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,7 +32,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         $sphere = auth()->user()->sphere;
-        return Inertia::render('Dashboard', compact('sphere'));
+        $user = auth()->user();
+        return Inertia::render('Dashboard', compact('sphere','user'));
     })->name('dashboard');
 });
 
@@ -39,14 +42,10 @@ Route::middleware([
 Route::resource('neighborhood', PostController::class)->middleware('auth');
 
 //Guest routes
-Route::resource('guest',GuestController::class)->except('show');
-Route::get('/guest/favorites',[GuestController::class, 'favorite'])->name('guest.favorite');
-Route::get('/guest/favorites/create',[GuestController::class, 'createFavorite'])->name('guest.create-favorite');
-Route::get('/guest/favorites/edit/{favorite_guest}',[GuestController::class, 'editFavorite'])->name('guest.edit-favorite');
-Route::put('/guest/favorites/update',[GuestController::class, 'updateFavorite'])->name('guest.update-favorite');
-Route::delete('/guest/favorites/delete',[GuestController::class, 'destroyFavorite'])->name('guest.delete-favorite');
+Route::resource('guest',GuestController::class);
+Route::resource('favorite-guests',FavoriteGuestController::class);
+Route::post('favorite-guests-program', [FavoriteGuestController::class, 'programGuest'])->name('favorite-guests.program-guest');
 Route::get('/guest/events',[GuestController::class, 'event'])->name('guest.events');
-Route::post('/guest/favorites/store',[GuestController::class, 'storeFavorite'])->name('guest.store-favorite');
 
 //Payment routes
 Route::resource('payments',PaymentController::class);
@@ -73,6 +72,10 @@ Route::resource('incidents', IncidentController::class);
 
 //Resident permissions routes
 Route::resource('resident-permissions', ResidentPermissionController::class);
+
+//Suggestions routes
+Route::resource('suggestions', SuggestionController::class);
+
 
 //---------------------------------------------------------------------------------------------
 
