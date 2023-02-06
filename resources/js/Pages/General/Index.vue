@@ -20,7 +20,7 @@
             <div
               class="flex flex-col text-center mt-10 text-gray-500 hover:text-cyan-600 rounded-lg border-2 border-gray-200 hover:border-cyan-600 px-2 py-2 mb-3 transition ease-in-out"
             >
-              <i class="fa-solid fa-headset text-5xl"></i>
+              <i class="fa-solid fa-comments text-5xl"></i>
               <p class="my-2">Chat con Caseta</p>
             </div>
           </Link>

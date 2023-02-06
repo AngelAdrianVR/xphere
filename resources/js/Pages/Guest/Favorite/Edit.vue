@@ -1,10 +1,12 @@
 <template>
-  <AppLayout title="Crear Favorito">
+  <AppLayout title="Editar Favorito">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Crear Favorito</h2>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        Editar Favorito
+      </h2>
     </template>
 
-    <AlertInfo>
+     <AlertInfo>
       <template #title>
         ATENCIÓN
       </template>
@@ -14,7 +16,7 @@
     </AlertInfo>
 
     <div class="flex justify-start ml-2">
-      <Link :href="route('guest.favorite')" class="flex items-center mt-2 text-slate-700">
+      <Link :href="route('favorite-guests.index')" class="flex items-center mt-2 text-slate-700">
         <i
           class="fas fa-long-arrow-alt-left text-lg hover:bg-gray-200 rounded-full w-7 h-7 pl-1"
         ></i>
@@ -25,7 +27,7 @@
     <div
       class="max-w-2xl md:mx-auto mt-5 shadow-md shadow-gray-500/70 rounded-lg px-5 py-8 bg-gray-200 mx-4"
     >
-      <form @submit.prevent="store">
+      <form @submit.prevent="update">
         <select
           class="bg-gray-200 mb-7 mr-2 rounded-lg border border-gray-300 text-gray-500 focus:border-cyan-500 focus:text-cyan-500"
           required
@@ -51,14 +53,14 @@
        </FloatingInput>
        <InputError :message="$page.props?.errors.name" />
 
-       <FloatingInput v-model="brand_car" type="text">
+       <FloatingInput v-model="form.brand_car" type="text">
         <template #label>
             Marca/modelo del Vehiculo
         </template>
        </FloatingInput>
        <InputError :message="$page.props?.errors.brand_car" />
 
-       <FloatingInput v-model="plate_car" type="text">
+       <FloatingInput v-model="form.plate_car" type="text">
         <template #label>
             Placa
         </template>
@@ -83,7 +85,7 @@
           <InputError :message="$page.props?.errors.notes" />
         </div>
         <div class="flex justify-center lg:justify-end">
-          <PrimaryButton :disabled="form.processing">Agregar</PrimaryButton>
+          <PrimaryButton :disabled="form.processing">Editar</PrimaryButton>
         </div>
       </form>
     </div>
@@ -93,18 +95,19 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import InputError from "@/Components/InputError.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
+import InputError from "@/Components/InputLabel.vue";
 import FloatingInput from '@/Components/FloatingInput.vue'
 import AlertInfo from '@/Components/AlertInfo.vue'
 
 export default {
   data() {
     const form = useForm({
-      name: null,
-      guest_type_id: "",
-      notes: "",
-      brand_car: "",
-      plate_car: "",
+      name:this.favorite_guest.name,
+      guest_type_id: this.guest_type_id,
+      notes: this.favorite_guest.notes,
+      brand_car: this.favorite_guest.brand_car,
+      plate_car: this.favorite_guest.plate_car,
     });
     return { form };
   },
@@ -113,21 +116,22 @@ export default {
     AppLayout,
     Link,
     PrimaryButton,
+    SecondaryButton,
     InputError,
     FloatingInput,
     AlertInfo,
-
   },
 
   props: {
+    favorite_guest: Object,
     guest_types: Object,
     filters: Object,
     filterURL: String,
   },
 
   methods: {
-    store() {
-      this.form.post(this.route("guest.store-favorite"));
+    update() {
+      this.form.put(this.route("favorite-guests.update",this.favorite_guest));
     },
   },
 };

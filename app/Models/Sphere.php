@@ -69,4 +69,9 @@ class Sphere extends Model
         return $this->hasMany(PermissionType::class);
     }
 
+    public function suggestions()
+    {
+        return $this->hasMany(Suggestion::class);
+    }
+
 }
