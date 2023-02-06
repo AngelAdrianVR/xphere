@@ -18,25 +18,9 @@
               <p class="font-semibold text-xs">{{ facility.hours_available }} Horas disponibles por reservación</p>
             </div>
             <div class="flex flex-row space-x-1">
-              <div class="bg-gray-100 px-3 py-1 rounded-lg flex space-x-2 flex-row">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"></path>
-                  <path
-                    d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z"
-                  ></path>
-                  <path d="M5 18v2"></path>
-                  <path d="M19 18v2"></path>
-                </svg>
-                <p class="text-xxsm">Cleanliness 4.5/5</p>
+              <div class="bg-gray-100 px-3 py-1 rounded-lg flex items-center space-x-2 flex-row">
+                <i class="fa-solid fa-users"></i>
+                <p class="text-xxsm">Capacidad: {{facility.capacity}}</p>
               </div>
               <div class="bg-green-100 px-3 py-1 rounded-lg flex space-x-2 flex-row">
                 <svg

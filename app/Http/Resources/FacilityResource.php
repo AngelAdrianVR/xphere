@@ -19,6 +19,7 @@ class FacilityResource extends JsonResource
             'name' => $this->name,
             'location' => $this->location,
             'description' => $this->description,
+            'capacity' => $this->capacity,
             'cost' => number_format($this->cost),
             'hours_available' => $this->hours_available,
             'sphere_id' => $this->sphere_id,  

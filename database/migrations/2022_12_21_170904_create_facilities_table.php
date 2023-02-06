@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('location')->nullable();
             $table->text('description');
+            $table->unsignedTinyInteger('capacity')->nullable();
             $table->unsignedFloat('cost');
             $table->unsignedTinyInteger('hours_available');
             $table->foreignId('sphere_id')->constrained()->onDelete('cascade');

@@ -12,6 +12,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationFacilityController;
 use App\Http\Controllers\ResidentPermissionController;
 use App\Http\Controllers\SuggestionController;
+use App\Http\Resources\GuestResource;
+use App\Http\Resources\PaymentResource;
+use App\Models\Guest;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,7 +36,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         $sphere = auth()->user()->sphere;
         $user = auth()->user();
-        return Inertia::render('Dashboard', compact('sphere','user'));
+        $user_id = auth()->id();
+        $guests = GuestResource::collection(Guest::where('user_id', $user_id)->whereNull('arrived_time')->get());
+        $pendent_payments = PaymentResource::collection(auth()->user()->payments()->whereNull('payed_at')->with('user')->latest()->get());
+        // return $pendent_payments;
+        return Inertia::render('Dashboard', compact('sphere','user','guests','pendent_payments'));
     })->name('dashboard');
 });
 
