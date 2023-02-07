@@ -10,9 +10,7 @@
           <small class="text-gray-500 -mt-1">{{ post.created_at }}</small>
         </div>
       </div>
-    </Link>
-    <div class="bg-gray-200 border-2 shadow-md rounded-md px-2 py-1">
-      <Link :href="route('neighborhood.show', post.id)">
+      <div class="bg-gray-200 border-2 shadow-md rounded-md px-2 py-1">
         <main>
           <div>
             <h1 class="font-bold text-lg text-gray-700">{{ post.title }}</h1>
@@ -21,8 +19,8 @@
             </p>
           </div>
         </main>
-      </Link>
-    </div>
+      </div>
+    </Link>
     <footer class="flex justify-between items-center">
       <div class="flex space-x-3 text-gray-600 mt-2">
         <p class="flex items-center">

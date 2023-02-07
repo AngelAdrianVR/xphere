@@ -43,10 +43,10 @@ class PostController extends Controller
     }
 
  
-    public function show(Post $post)
+    public function show($post_id)
     {
-        
-        // return $post;
+        $post = Post::find($post_id);
+
         return inertia("Neighborhood/Show", compact('post'));
     }
 

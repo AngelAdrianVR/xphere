@@ -34,7 +34,7 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ favorite_guest.plate_car }}</td>
             <td class=" border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
               <div class="flex items-center">
-                    <PrimaryButton @click="$inertia.post(route('favorite-guests.program-guest', favorite_guest))" class="">Programar</PrimaryButton>
+                    <PrimaryButton @click="programGuest(favorite_guest.id)" class="">Programar</PrimaryButton>
                     <Link :href="route('favorite-guests.edit', favorite_guest.id)"><i title="Editar" class="fa-solid fa-pencil hover:text-blue-600 mx-2"></i></Link>
                     <button @click="delete_confirm = true; item_to_delete = favorite_guest;"><i title="Eliminar" class="fa fa-trash hover:text-red-600 mx-2"></i></button>
               </div>
@@ -96,6 +96,17 @@ export default {
       );
       this.delete_confirm = false;
     },
+    programGuest(favorite_guest_id) {
+      const selected_fav_guest = this.favorite_guests.data.find(fav_guest => fav_guest.id === favorite_guest_id);
+
+      this.$inertia.post(route('favorite-guests.program-guest'), {
+        name: selected_fav_guest.name,
+        notes: selected_fav_guest.notes,
+        brand_car: selected_fav_guest.brand_car,
+        plate_car: selected_fav_guest.plate_car,
+        guest_type_id: selected_fav_guest.guest_type.id,
+      });
+    }
   },
 }
 </script>

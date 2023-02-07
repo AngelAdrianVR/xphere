@@ -90,16 +90,16 @@ class FavoriteGuestController extends Controller
     public function programGuest(Request $request)
     {
         // return $request;
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|max:50',
             'notes' => 'max:100',
             'brand_car' => 'nullable|max:100',
             'plate_car' => 'nullable|max:8',
         ]);
 
-       Guest::create($request->all() + [
+       Guest::create($validated + [
         'user_id'=>auth()->id(),
-        'guest_type_id' => $request->guest_type_id['id'],
+        'guest_type_id' => $request->guest_type_id,
     ]);
         
         request()->session()->flash('flash.banner', 'Se ha programado tu visita');
