@@ -10,7 +10,7 @@
       bg-transparet
     "
   >
-        <div class="bg-gray-200 shadow-md rounded-md px-2 py-3 border-dashed border-2 border-gray-400">
+        <div class="bg-white shadow-md rounded-md px-2 py-3 border-dashed border-2 border-gray-400">
         <!-- <Link :href="route('neighborhood.show', payments.id)"> --> 
           <main class="grid grid-cols-3">
             <div class="col-span-2">
@@ -20,7 +20,7 @@
               <p class="text-sm text-gray-500 max-h-20 overflow-hidden uppercase">{{ payment.description }}</p>
             </div>
             <div class="flex justify-center items-center">
-                <p class="text-sm text-gray-500 max-h-20 overflow-hidden mx-9">${{ payment.amount }}</p><i class="fa-solid fa-angle-right text-gray-400"></i>
+                <p class="text-sm text-gray-500 max-h-20 overflow-hidden mx-6">${{ payment.amount }}</p><i class="fa-solid fa-angle-right text-gray-400"></i>
             </div>
           </main>
           <!-- </Link> -->

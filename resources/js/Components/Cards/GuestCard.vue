@@ -1,4 +1,5 @@
 <template>
+<Link :href="route('guest.edit', guest.id)">
   <div
     class="rounded-lg cursor-pointer border-2 border-gray-200 hover:border-cyan-600 px-2 py-2 mb-3 transition ease-in-out bg-white"
   >
@@ -27,6 +28,7 @@
     </div>
 
   </div>
+  </Link>
 </template>
 <script>
 import { Link } from "@inertiajs/inertia-vue3";

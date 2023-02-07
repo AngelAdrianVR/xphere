@@ -10,15 +10,25 @@
     <div class="h-[100%] relative">
       <!-- ---------------------------LOGO---------------------------- -->
       <div
-        class="w-24 h-24 rounded-full border-8 border-gray-300 absolute sm:bottom-[80%] bottom-[83%] sm:right-[46%] right-[37%] flex justify-center items-center"
+        class="w-24 h-24 rounded-full border-8 border-gray-300 absolute sm:bottom-[80%] bottom-[83%] sm:right-[46%] right-[38%] flex justify-center items-center"
       >
         <p class="text-gray-500 font-semibold">logo</p>
       </div>
 
       <!-- ---------------------------PAYMENTS---------------------------- -->
       <Link :href="route('payments.index')">
-        <div 
-          class="w-56 h-56 rounded-full border-8 hover:ring-2 ring-offset-1 ring-green-600 border-green-500 absolute sm:bottom-[40%] bottom-[50%] sm:right-[40%] right-[21%] flex justify-center items-center"
+        <div v-if="!pendent_payments.data.length"
+          class="w-56 h-56 rounded-full border-8 hover:ring-2 ring-offset-1 ring-green-600 border-green-500 absolute sm:bottom-[40%] bottom-[50%] sm:right-[40%] right-[23%] flex justify-center items-center"
+        >
+          <p class="text-gray-500 font-semibold">Tiene {{pendent_payments.data.length}} Pago(s) pendientes</p>
+        </div>
+        <div v-else-if="pendent_payments.data.length >=1 && pendent_payments.data.length <=2"
+          class="w-56 h-56 rounded-full border-8 hover:ring-2 ring-offset-1 ring-orange-600 border-orange-500 absolute sm:bottom-[40%] bottom-[50%] sm:right-[40%] right-[23%] flex justify-center items-center"
+        >
+          <p class="text-gray-500 font-semibold">Tiene {{pendent_payments.data.length}} Pago(s) pendientes</p>
+        </div>
+        <div v-else
+          class="w-56 h-56 rounded-full border-8 hover:ring-2 ring-offset-1 ring-red-600 border-red-500 absolute sm:bottom-[40%] bottom-[50%] sm:right-[40%] right-[23%] flex justify-center items-center"
         >
           <p class="text-gray-500 font-semibold">Tiene {{pendent_payments.data.length}} Pago(s) pendientes</p>
         </div>
@@ -103,7 +113,7 @@
           <p class="text-gray-500 font-semibold">{{ sphere.name }}</p>
           <p class="text-gray-500 font-semibold">{{ sphere.location }}</p>
           <p class="text-gray-500 font-semibold">{{ user.name }}</p>
-          <p class="text-gray-500 font-semibold">{{ 'user.phone' }}</p>
+          <p class="text-gray-500 font-semibold">{{ user.phone }}</p>
           <p class="text-gray-500 font-semibold">{{ user.email }}</p>
         </template>
         <template #footer>
@@ -119,7 +129,7 @@
     <div v-if="guests.data.length" class="py-4">
       <div class="max-w-7xl mx-auto lg:px-8">
         <div class="lg:grid grid-cols-3 gap-4">
-          <GuestCard v-for="guest in guests.data" :key="guest.id" :guest="guest" />
+            <GuestCard v-for="guest in guests.data" :key="guest.id" :guest="guest" />
         </div>
       </div>
     </div>
@@ -136,6 +146,18 @@
       </div>
     </div>
     <p v-else class="text-gray-600 text-center">No tienes reservaciones pendientes.</p>
+<!-- -------------------------RESIDENT PERMISSIONS------------------------ -->
+<h1 class="text-lg font-bold text-gray-500 text-center mt-7">Permisos Solicitados</h1>
+
+    <div v-if="guests.data.length" class="py-4">
+      <div class="max-w-7xl mx-auto lg:px-8">
+        <div class="lg:grid grid-cols-3 gap-4">
+          <GuestCard v-for="guest in guests.data" :key="guest.id" :guest="guest" />
+        </div>
+      </div>
+    </div>
+    <p v-else class="text-gray-600 text-center">No tienes permisos solicitados recientemente.</p>
+
 
   </div>
   </AppLayout>
@@ -149,7 +171,10 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import GuestCard from "@/Components/Cards/GuestCard.vue"; 
 export default {
   data() {
-    return {};
+  
+    return {
+      payment_circle: "null",
+    };
   },
   props: {
     sphere: Object,
@@ -165,5 +190,6 @@ export default {
     PrimaryButton,
     GuestCard,
   },
+
 };
 </script>

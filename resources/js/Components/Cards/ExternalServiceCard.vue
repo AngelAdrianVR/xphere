@@ -22,10 +22,10 @@
           </div>
           <div class="bg-gray-300 mx-2 pb-1 rounded-lg text-gray-700">
             <p class="text-center pt-1 mt-2 text-gray-800 font-bold">Redes sociales</p>
-            <div class="text-center mt-1 font-light text-sm"><i class="fa-solid fa-earth-americas text-gray-500"></i> <a class="hover:underline inline-block py-1" href="#"> {{external_service.website}}</a></div>
-            <div class="text-center mt-1 font-light text-sm"><i class="fa-brands fa-facebook text-blue-600"></i> <a class="hover:underline inline-block py-1" href="#"> {{external_service.website}}</a></div>
-            <div class="text-center mt-1 font-light text-sm"><i class="fa-brands fa-instagram bg-gradient-to-tl from-orange-400 to-violet-500 text-gray-200"></i> <a class="hover:underline inline-block py-1" href="#"> {{external_service.website}}</a></div>
-            <div class="text-center mt-1 font-light text-sm"><i class="fa-brands fa-tiktok"></i> <a class="hover:underline inline-block py-1" href="#"> {{external_service.website}}</a></div>
+            <div class="text-center mt-1 font-light text-sm"><i class="fa-solid fa-earth-americas text-gray-500"></i> <a target="blank" class="hover:underline inline-block py-1" :href="external_service.website"> {{external_service.website}}</a></div>
+            <div class="text-center mt-1 font-light text-sm"><i class="fa-brands fa-facebook text-blue-600"></i> <a target="blank" class="hover:underline inline-block py-1" href="#"> {{external_service.website}}</a></div>
+            <div class="text-center mt-1 font-light text-sm"><i class="fa-brands fa-instagram bg-gradient-to-tl from-orange-400 to-violet-500 text-gray-200"></i> <a target="blank" class="hover:underline inline-block py-1" href="#"> {{external_service.website}}</a></div>
+            <div class="text-center mt-1 font-light text-sm"><i class="fa-brands fa-tiktok"></i> <a target="blank" class="hover:underline inline-block py-1" href="{{external_service.website}}"> {{external_service.website}}</a></div>
           </div>
           <hr class="mt-8" />
           <div class="flex p-4">
