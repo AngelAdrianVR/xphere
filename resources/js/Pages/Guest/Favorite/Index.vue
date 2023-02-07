@@ -23,7 +23,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import FavoriteGuestTable from "@/Components/FavoriteGuestTable.vue";
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import Pagination from "@/Components/Pagination.vue";
