@@ -12,11 +12,15 @@ use Inertia\Inertia;
 class FavoriteGuestController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $filters = $request->all('search');
 
-        $favorite_guests = FavoriteGuestResource::collection(auth()->user()->favoriteGuests()->with(['guestType','user'])
-                    ->latest()->paginate(30));
+        $favorite_guests = FavoriteGuestResource::collection(auth()->user()->favoriteGuests()
+                    ->with(['guestType','user'])
+                    ->filter($filters)
+                    ->latest()
+                    ->paginate(30));
         return Inertia::render('Guest/Favorite/Index',compact('favorite_guests'));
     }
 

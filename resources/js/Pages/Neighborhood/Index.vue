@@ -23,6 +23,7 @@
   </AppLayout>
 </template>
 <script>
+
 import AppLayout from "@/Layouts/AppLayout.vue";
 import PostCard from "@/Components/Cards/PostCard.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
