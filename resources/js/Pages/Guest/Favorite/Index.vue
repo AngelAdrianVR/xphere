@@ -13,7 +13,7 @@
         <SecondaryButton class="mr-7 my-4">Agregar</SecondaryButton>
       </Link>
     </div>
-    <SearchInput :filters="filters" filterURL="/guest/favorites" />
+    <SearchInput :filters="filters" filterURL="/favorite-guests" />
     <FavoriteGuestTable :favorite_guests="favorite_guests" />
     <!-- <div class="flex justify-end">
       <Pagination :pagination="favorite_guests" />
@@ -63,8 +63,8 @@ export default {
 
   props: {
     favorite_guests: Object,
-    // filters: Object,
-    // filterURL: String,
+    filters: Object,
+    filterURL: String,
   },
 
   methods: {},

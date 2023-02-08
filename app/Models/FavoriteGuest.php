@@ -30,11 +30,14 @@ class FavoriteGuest extends Model
      // query scopes
      public function scopeFilter($query, $filters)
      {
-         $query->when($filters["search"] ?? null, function($query, $search){
-             $query->where('name', 'LIKE', "%$search%")
-                   ->orWhere('guest_type', 'LIKE', "%$search%")
-                   ->orWhere('created_at', 'LIKE', "%$search%");
- 
-         });
+        $query->when($filters["search"] ?? null, function ($query, $search) {
+            $query->where('name', 'LIKE', "%$search%")
+                ->orWhereHas('guestType', function ($query) use ($search) {
+                    $query->where('name', $search);
+                })
+                ->orWhere('created_at', 'LIKE', "%$search%")
+                ->orWhere('plate_car', 'LIKE', "%$search%")
+                ->orWhere('brand_car', 'LIKE', "%$search%");
+        });
      }
 }
