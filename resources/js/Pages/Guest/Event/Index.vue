@@ -1,7 +1,7 @@
 <template>
-  <AppLayout title="Visitas Favoritas">
+  <AppLayout title="Eventos">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Visitas Favoritas</h2>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Eventos</h2>
     </template>
 
     <div class="my-4 border-b border-gray-300">
@@ -9,22 +9,21 @@
     </div>
 
     <div class="flex justify-end">
-      <Link :href="route('favorite-guests.create')">
-        <SecondaryButton class="mr-7 my-4">Agregar</SecondaryButton>
+      <Link :href="route('guest-events.create')">
+        <SecondaryButton class="mr-7 my-4">Programar Evento</SecondaryButton>
       </Link>
     </div>
-    <SearchInput :filters="filters" filterURL="/favorite-guests" />
-    <FavoriteGuestTable :favorite_guests="favorite_guests" />
-    <!-- <div class="flex justify-end">
-      <Pagination :pagination="favorite_guests" />
-    </div> -->
+    <SearchInput :filters="filters" filterURL="/guest-events" />
+    <EventTable :events="events" />
+    <div class="flex justify-end">
+      <Pagination :pagination="events" />
+    </div>
   </AppLayout>
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import FavoriteGuestTable from "@/Components/FavoriteGuestTable.vue";
-import { Link } from "@inertiajs/inertia-vue3";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
+import EventTable from "@/Components/EventTable.vue";
+import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import Pagination from "@/Components/Pagination.vue";
 import SearchInput from "@/Components/SearchInput.vue";
@@ -33,7 +32,7 @@ import Tabs from "@/Components/Tabs.vue";
 export default {
   data() {
     return {
-      tabs: [
+        tabs: [
         {
           label: "Bitácora",
           url: "guest.index",
@@ -52,9 +51,8 @@ export default {
 
   components: {
     AppLayout,
-    FavoriteGuestTable,
+    EventTable,
     Link,
-    PrimaryButton,
     SecondaryButton,
     Pagination,
     SearchInput,
@@ -62,7 +60,7 @@ export default {
   },
 
   props: {
-    favorite_guests: Object,
+    events: Object,
     filters: Object,
     filterURL: String,
   },

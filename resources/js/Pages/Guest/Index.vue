@@ -43,7 +43,7 @@ export default {
         },
         {
           label: "Eventos",
-          url: "guest.events",
+          url: "guest-events.index",
         },
       ],
     };

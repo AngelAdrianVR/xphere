@@ -35,8 +35,8 @@ class GuestController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'notes' => 'max:100',
-            'brand_car' => 'nullable|max:100',
+            'notes' => 'max:200',
+            'brand_car' => 'nullable|max:50',
             'plate_car' => 'nullable|max:8',
         ]);
 
@@ -61,7 +61,6 @@ class GuestController extends Controller
 
     public function edit(Guest $guest)
     {
-        // return $guest;
         $guest_types = GuestType::all();
         return inertia('Guest/Edit',compact('guest','guest_types'));
     }
