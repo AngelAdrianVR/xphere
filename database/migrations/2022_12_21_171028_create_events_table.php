@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->unsignedTinyInteger('num_guests')->nullable();
             $table->string('code_event');
             $table->text('notes')->nullable();
-            $table->boolean('is_active')->default(true);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

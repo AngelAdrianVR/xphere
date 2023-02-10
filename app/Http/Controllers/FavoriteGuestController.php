@@ -65,7 +65,6 @@ class FavoriteGuestController extends Controller
 
     public function update(Request $request, FavoriteGuest $favorite_guest)
     {
-        // return $favorite_guest;
         $validated = $request->validate([
             'name' => 'required|max:50',
             'notes' => 'max:100',
