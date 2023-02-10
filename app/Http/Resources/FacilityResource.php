@@ -24,6 +24,7 @@ class FacilityResource extends JsonResource
             'hours_available' => $this->hours_available,
             'sphere_id' => $this->sphere_id,  
             'created_at' => $this->created_at,  
+            'is_active' => $this->is_active,  
         ];
     }
 }

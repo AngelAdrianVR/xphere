@@ -22,7 +22,9 @@ class ReservationFacilityController extends Controller
   
     public function create()
     {
-        //
+        // $facility = Facility::find($facility_id);
+        // return $facility;
+        // return inertia('ReservationFacilities/Create');
     }
 
   
@@ -32,9 +34,10 @@ class ReservationFacilityController extends Controller
     }
 
  
-    public function show(ReservationFacility $reservationFacility)
+    public function show($facility_id)
     {
-        //
+        $facility = Facility::find($facility_id);
+        return inertia('ReservationFacilities/Create', compact('facility'));
     }
 
 

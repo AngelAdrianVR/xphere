@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('is_active')->default(1);
             $table->string('location')->nullable();
             $table->text('description');
             $table->unsignedTinyInteger('capacity')->nullable();
