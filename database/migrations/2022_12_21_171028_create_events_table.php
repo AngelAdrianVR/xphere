@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('num_guests')->nullable();
             $table->string('code_event');
             $table->text('notes')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

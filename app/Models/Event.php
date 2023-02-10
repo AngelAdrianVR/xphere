@@ -14,6 +14,7 @@ class Event extends Model
         'code_event',
         'notes',
         'user_id',
+        'is_active',
     ];
 
     //relationships

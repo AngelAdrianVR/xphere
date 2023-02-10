@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Gladiolas 301',
             'email' => 'test@example.com',
+            'phone' => '3312155731',
         ]);
 
         // \App\Models\GuestType::factory()->create([
