@@ -73,5 +73,10 @@ class Sphere extends Model
     {
         return $this->hasMany(Suggestion::class);
     }
+    
+    public function configs()
+    {
+        return $this->hasMany(Config::class);
+    }
 
 }

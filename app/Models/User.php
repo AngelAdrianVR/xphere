@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cog\Laravel\Love\Reacterable\Models\Traits\Reacterable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,14 +10,16 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Cog\Contracts\Love\Reacterable\Models\Reacterable as ReacterableInterface;
 
-class User extends Authenticatable
+class User extends Authenticatable implements ReacterableInterface
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Reacterable;
 
     /**
      * The attributes that are mass assignable.
@@ -116,4 +119,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(ResidentPermission::class);
     }
+
+
+    // public function isDebtor()
+    // {
+        
+    //    $pendent_payments = auth()->user()->payments()->whereNull('payed_at')->count();
+    //    if($pendent_payments >= 3)
+    //     return $pendent_payments;
+    //     else
+    //     return false;
+    // }
 }

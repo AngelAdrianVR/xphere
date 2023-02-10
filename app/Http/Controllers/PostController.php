@@ -47,6 +47,8 @@ class PostController extends Controller
     {
         $post = Post::find($post_id);
 
+        // return $post;
+
         return inertia("Neighborhood/Show", compact('post'));
     }
 
