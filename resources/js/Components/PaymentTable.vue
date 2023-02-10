@@ -23,6 +23,7 @@
             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700">Monto</th>
             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700">Status</th>
             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700">Fecha de pagado</th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-sky-800 text-sky-300 border-sky-700"></th>
           </tr>
         </thead>
 
@@ -40,6 +41,11 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               <div>
                 <span>{{payment.payed_at}}</span>
+              </div>
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              <div>
+                <primaryButton v-if="payment.status['text'] === 'Pendiente' || payment.status['text'] === 'Expirado' ">Pagar</primaryButton>
               </div>
             </td>
           </tr>

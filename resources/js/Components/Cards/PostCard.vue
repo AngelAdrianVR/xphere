@@ -14,7 +14,7 @@
         <main>
           <div>
             <h1 class="font-bold text-lg text-gray-700">{{ post.title }}</h1>
-            <p class="text-sm text-gray-700 max-h-20 overflow-hidden">
+            <p class="text-sm text-gray-700 truncate">
               {{ post.content }}
             </p>
           </div>
@@ -24,15 +24,15 @@
     <footer class="flex justify-between items-center">
       <div class="flex space-x-3 text-gray-600 mt-2">
         <p class="flex items-center">
-          <i class="fa-regular fa-thumbs-up rounded-full p-1 hover:bg-gray-300"></i>
+          <i class="fa-regular fa-thumbs-up rounded-full p-1"></i>
           <span>10</span>
         </p>
         <p class="flex items-center">
-          <i class="fa-regular fa-comment rounded-full p-1 hover:bg-gray-300"></i>
+          <i class="fa-regular fa-comment rounded-full p-1"></i>
           <span>4</span>
         </p>
         <p class="flex items-center">
-          <i class="fa-regular fa-image rounded-full p-1 hover:bg-gray-300"></i>
+          <i class="fa-regular fa-image rounded-full p-1"></i>
           <span>2</span>
         </p>
       </div>

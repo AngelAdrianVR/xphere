@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center border-b-2 font-bold dark:border-slate-700 w-full overflow-x-auto">
+  <div class="flex justify-center items-center border-b-2 font-bold w-full overflow-x-auto">
     <Link v-for="(tab, key) in tabs" :key="key" :href="route(tab.url)"
       :class="route().current(tab.url) ? 'border-teal-500 text-teal-500 border-b-2' : ''" class="px-7 py-1"
       v-html="tab.label" />

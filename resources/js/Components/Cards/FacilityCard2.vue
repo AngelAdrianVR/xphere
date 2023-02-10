@@ -65,7 +65,7 @@
                 <div class="text-right">
                   <p class="text-2xl font-bold">${{ facility.cost }}</p>
                   <p class="text-sm text-green-500">Aportación por reservación.</p>
-                  <p class="text-sm text-red-500">La cancelación debe de hacerse minimo 3 días antes de la fecha reservada</p>
+                  <p class="text-sm text-gray-500">La cancelación debe de hacerse minimo 3 días antes de la fecha reservada</p>
                 </div>
               </div>
               <div class="flex justify-center mt-2">

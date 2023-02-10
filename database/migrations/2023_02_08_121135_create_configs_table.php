@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->id();
-            $table->string('concept');
-            $table->text('description')->nullable();
-            $table->unsignedFloat('amount');
-            $table->date('payed_at')->nullable();
-            $table->date('expired_date');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            
+            $table->string('key');
+            $table->string('value');
+            $table->foreignId('sphere_id')->constrained()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('configs');
     }
 };

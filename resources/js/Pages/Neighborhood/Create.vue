@@ -13,7 +13,7 @@
       </Link>
     </div>
 
-    <div class="max-w-2xl md:mx-auto mt-5 shadow-md shadow-gray-500/70 rounded-lg px-5 py-8 bg-gray-200 mx-4">
+    <div class="max-w-2xl md:mx-auto mt-5 shadow-md shadow-gray-500/70 rounded-lg px-5 py-8 bg-white mx-4">
 	<form @submit.prevent="store">
 
     <FloatingInput v-model="form.title" type="text">
