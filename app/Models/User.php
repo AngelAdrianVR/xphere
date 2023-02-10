@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Cog\Laravel\Love\Reacterable\Models\Traits\Reacterable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,16 +9,14 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Cog\Contracts\Love\Reacterable\Models\Reacterable as ReacterableInterface;
 
-class User extends Authenticatable implements ReacterableInterface
+class User extends Authenticatable 
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use Reacterable;
 
     /**
      * The attributes that are mass assignable.

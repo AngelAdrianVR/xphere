@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExternalServicesController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\FavoriteGuestController;
@@ -52,7 +53,7 @@ Route::resource('neighborhood', PostController::class)->middleware('auth');
 Route::resource('guest',GuestController::class);
 Route::resource('favorite-guests',FavoriteGuestController::class);
 Route::post('favorite-guests-program', [FavoriteGuestController::class, 'programGuest'])->name('favorite-guests.program-guest');
-Route::get('/guest/events',[GuestController::class, 'event'])->name('guest.events');
+Route::resource('guest-events',EventController::class);
 
 //Payment routes
 Route::resource('payments',PaymentController::class);

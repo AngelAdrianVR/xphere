@@ -31,6 +31,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => bcrypt('123123123'), // password
             'sphere_id' => Sphere::all()->random()->id,
+            'phone' => $this->faker->phoneNumber(),
             // 'remember_token' => Str::random(10),
         ];
     }
