@@ -17,8 +17,7 @@
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
-import FacilityCard from "@/Components/Cards/FacilityCard.vue";
+import { Link } from "@inertiajs/inertia-vue3";
 import FacilityCard2 from "@/Components/Cards/FacilityCard2.vue";
 
 export default {
@@ -30,7 +29,6 @@ export default {
   components: {
     AppLayout,
     Link,
-    FacilityCard,
     FacilityCard2,
   },
 

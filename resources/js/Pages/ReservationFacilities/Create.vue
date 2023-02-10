@@ -1,7 +1,7 @@
 <template>
-  <AppLayout title="Crear Evento">
+  <AppLayout title="Reservar Área">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Crear Evento</h2>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ facility.name }}</h2>
     </template>
 
     <AlertInfo>
@@ -15,9 +15,9 @@
     </AlertInfo>
 
     <div class="flex justify-start ml-2">
-      <Link :href="route('guest-events.index')" class="flex items-center mt-2 text-slate-700">
+      <Link :href="route('reservation-facilities.index')" class="flex items-center mt-2 text-slate-700">
         <i
-          class="fas fa-long-arrow-alt-left text-lg hover:bg-gray-200 rounded-full w-7 h-7 pl-1"
+          class="fas fa-long-arrow-alt-left text-lg hover:bg-gray-300 rounded-full w-7 h-7 pl-1"
         ></i>
         <span class="ml-1 cursor-default">Atrás</span>
       </Link>
@@ -28,19 +28,33 @@
     >
       <form @submit.prevent="store">
 
-        <FloatingInput v-model="form.name" type="text">
+        <FloatingInput v-model="form.reservation_name" type="text">
         <template #label>
-            Nombre del evento *
+            Nombre de quien reserva *
         </template>
        </FloatingInput>
-       <InputError :message="$page.props?.errors.name" />
+       <InputError :message="$page.props?.errors.reservation_name" />
 
-       <FloatingInput v-model="form.num_guests" type="number">
+       <FloatingInput v-model="form.reservation_date" type="date">
         <template #label>
-            Núm. aprox invitados
+            Fecha de reservación *
         </template>
        </FloatingInput>
-       <InputError :message="$page.props?.errors.num_guests" />
+       <InputError :message="$page.props?.errors.reservation_name" />
+
+       <FloatingInput v-model="form.event_start" type="time">
+        <template #label>
+            Hora de comienzo *
+        </template>
+       </FloatingInput>
+       <InputError :message="$page.props?.errors.event_start" />
+
+       <FloatingInput v-model="form.event_end" type="time">
+        <template #label>
+            Hora de terminación *
+        </template>
+       </FloatingInput>
+       <InputError :message="$page.props?.errors.event_end" />
 
         <div class="relative z-0 mb-6 w-full group">
           <textarea
@@ -68,21 +82,24 @@
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputError from "@/Components/InputError.vue";
 import FloatingInput from '@/Components/FloatingInput.vue'
 import AlertInfo from '@/Components/AlertInfo.vue'
 
 export default {
-  data() {
-    const form = useForm({
-      name: null,
-      num_guests: null,
-      notes: "",
-    });
-    return { form };
-  },
+   data(){
+        const form = useForm({
+          reservation_name: "",
+          reservation_date: null,
+          event_start: null,
+          event_end: null,
+          notes: "",
+          facility_id: this.facility.id,
+        });
+        return { form };
+    },
 
   components: {
     AppLayout,
@@ -94,13 +111,12 @@ export default {
   },
 
   props: {
-    filters: Object,
-    filterURL: String,
+    facility: Object,
   },
 
   methods: {
     store() {
-      this.form.post(this.route("guest-events.store"));
+      this.form.post(this.route("reservation-facilities.store"));
     },
   },
 };

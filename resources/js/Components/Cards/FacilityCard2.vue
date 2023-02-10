@@ -1,8 +1,8 @@
 <template>
      <!-- component -->
-    <div class="flex items-center justify-center bg-transparent my-5">
+    <div class="flex items-center justify-center bg-transparent my-7">
       <div
-        class="flex flex-col shadow-xl bg-white rounded-lg"
+        class="flex flex-col shadow-lg shadow-gray-400/100 bg-white rounded-lg"
         style="width: 370px; height: 550px rounded: 10px"
       >
         <div class="flex flex-col">
@@ -22,25 +22,13 @@
                 <i class="fa-solid fa-users"></i>
                 <p class="text-xxsm">Capacidad: {{facility.capacity}}</p>
               </div>
-              <div class="bg-green-100 px-3 py-1 rounded-lg flex space-x-2 flex-row">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M7 10v12"></path>
-                  <path
-                    d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"
-                  ></path>
-                </svg>
-                <p class="text-xxsm">Location 4.5/5</p>
+              <div v-if="facility.is_active" class="bg-green-100 px-3 py-1 rounded-lg flex space-x-2 flex-row">
+                <p class="text-xxsm text-green-600">Activo</p>
               </div>
+              <div v-else class="bg-red-100 px-3 py-1 rounded-lg flex space-x-2 flex-row">
+                <p  class="text-xxsm text-red-600">Inactivo</p>
             </div>
+          </div>
             <div
               class="text-grey-500 flex flex-row space-x-1 py-4 border-t border-b border-gray-200 my-4"
             >
@@ -69,7 +57,9 @@
                 </div>
               </div>
               <div class="flex justify-center mt-2">
-                <PrimaryButton class="w-full flex justify-center"> Reservar </PrimaryButton>
+              <Link :href="route('reservation-facilities.show', facility.id)">
+                <PrimaryButton :disabled="!facility.is_active" class="w-full flex justify-center"> Reservar </PrimaryButton>
+                </Link>
               </div>
             </div>
           </div>
@@ -79,33 +69,20 @@
 </template>
 
 <script>
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import InputError from "@/Components/InputError.vue";
 
 export default {
-    data(){
-        const form = useForm({
-          reservation_name: "",
-          reservation_date: null,
-          event_start: "",
-          notes: "",
-          facility_id: null,
-        });
-        return { form };
-    },
+
   props: {
     facility: Object,
   },
   components: {
     Link,
     PrimaryButton,
-    InputError,
   },
   methods:{
-    store() {
-      this.form.post(this.route("reservation-facilities.store"));
-    },
+
   }
 };
 </script>
