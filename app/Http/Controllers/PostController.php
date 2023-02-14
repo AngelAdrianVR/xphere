@@ -45,14 +45,13 @@ class PostController extends Controller
     }
 
  
-    public function show($post_id)
+    public function show(Post $post)
     {
-        $post = Post::find($post_id);
-        $media = $post->getMedia()->all();
+        $post = PostResource::make(Post::with('user')->find($post->id));
 
         // return $post;
 
-        return inertia("Neighborhood/Show", compact('post','media'));
+        return inertia("Neighborhood/Show", compact('post'));
     }
 
     public function edit(Post $post)
