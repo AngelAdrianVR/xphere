@@ -17,6 +17,10 @@ class ExternalServices extends Model
         'social_networks',
     ];
 
+    protected $casts = [
+        'social_networks' => 'array',
+    ];
+
     //relationships
     public function sphere()
     {

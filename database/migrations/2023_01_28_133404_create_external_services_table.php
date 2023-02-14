@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->text('description')->nullable();
             $table->string('website')->nullable();
-            $table->text('social_networks')->nullable();
+            $table->json('social_networks')->nullable();
             $table->foreignId('sphere_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();

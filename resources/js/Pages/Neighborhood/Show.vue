@@ -28,6 +28,23 @@
               {{ post.content }}
             </p>
           </div>
+          <div class="mt-7">
+            <InputLabel class="text-gray-400" value="Archivos subidos" />
+            <div
+              class="flex flex-col"
+              v-for="file in media"
+              :key="file.id"
+            >
+              <div>
+                <a
+                  :href="file.original_url"
+                  target="_blank"
+                  class="text-sm text-cyan-600 hover:underline"
+                  >{{ file.name }}
+                </a>
+              </div>
+            </div>
+            </div>
         </main>
       </div>
       <footer class="flex justify-between items-center w-full border-b-2 border-gray-200">
@@ -62,6 +79,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import PostCard from "@/Components/Cards/PostCard.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import InputLabel from "@/Components/InputLabel.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
@@ -75,9 +93,11 @@ export default {
     PostCard,
     PrimaryButton,
     Link,
+    InputLabel,
   },
   props: {
     post: Object,
+    media: Array,
   },
   methods:{
     comment_toggle(){

@@ -30,7 +30,7 @@
     </div>
 
 		<div class="relative z-0 mb-6 w-full group">
-			<FileUploader />
+			<FileUploader @input="form.resources = $event.target.files" />
     </div>
 
     <div class="flex justify-center lg:justify-end">
@@ -55,7 +55,8 @@ export default {
     const form = useForm({
         title: "",
         guest_type_id: "",
-        content: "",   
+        content: "",
+        resources: null,   
       })
     return {form};
   },
