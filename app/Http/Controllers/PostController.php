@@ -34,7 +34,9 @@ class PostController extends Controller
             'content' => 'required' 
         ]);
 
-        Post::create($request->all() + ['user_id' => auth()->id()]);
+
+        $post = Post::create($request->all() + ['user_id' => auth()->id()]);
+        $post->addAllMediaFromRequest()->each(fn ($file) => $file->toMediaCollection());
 
         request()->session()->flash('flash.banner', 'Se ha publicado tu post');
         request()->session()->flash('flash.bannerStyle', 'success');
@@ -46,10 +48,11 @@ class PostController extends Controller
     public function show($post_id)
     {
         $post = Post::find($post_id);
+        $media = $post->getMedia()->all();
 
         // return $post;
 
-        return inertia("Neighborhood/Show", compact('post'));
+        return inertia("Neighborhood/Show", compact('post','media'));
     }
 
     public function edit(Post $post)

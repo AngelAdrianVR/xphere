@@ -13,7 +13,15 @@ class PaymentController extends Controller
  
     public function index()
     {
-        $payments = PaymentResource::collection(auth()->user()->payments()->whereNull('payed_at')->whereDate('expired_date', '>', today())->with('user')->latest()->get());
+        $payments = PaymentResource::collection(auth()
+                    ->user()
+                    ->payments()
+                    ->whereNull('payed_at')
+                    ->whereDate('expired_date', '>', today())
+                    ->orWhereNull('expired_date')
+                    ->with('user')
+                    ->latest()
+                    ->get());
         // return $payments;
         return Inertia::render('Payment/Index',compact('payments'));
     }

@@ -14,6 +14,24 @@ defineProps({
   title: String,
 });
 
+const admin_menues = [
+  // {
+  //   label: "Historial de ventas",
+  //   route_name: "sales.index",
+  //   is_active: route().current("sales" + ".*"),
+  // },
+];
+
+const menues = [
+  // {
+  //   label: "Inicio",
+  //   route_name: "dashboard",
+  //   is_active: route().current("dashboard"),
+  //   admin_can_see: true,
+  // },
+
+];
+
 const showingNavigationDropdown = ref(false);
 
 const switchToTeam = (team) => {
@@ -260,7 +278,7 @@ const logout = () => {
                       </div>
 
                       <DropdownLink :href="route('profile.show')">
-                        Profile
+                        Perfil
                       </DropdownLink>
 
                       <DropdownLink
@@ -274,7 +292,7 @@ const logout = () => {
 
                       <!-- Authentication -->
                       <form @submit.prevent="logout">
-                        <DropdownLink as="button"> Log Out </DropdownLink>
+                        <DropdownLink as="button"> Cerrar Sesión </DropdownLink>
                       </form>
                     </template>
                   </Dropdown>
@@ -505,7 +523,7 @@ const logout = () => {
                   :href="route('profile.show')"
                   :active="route().current('profile.show')"
                 >
-                  Profile
+                  Perfil
                 </ResponsiveNavLink>
 
                 <ResponsiveNavLink
@@ -518,7 +536,7 @@ const logout = () => {
 
                 <!-- Authentication -->
                 <form method="POST" @submit.prevent="logout">
-                  <ResponsiveNavLink as="button"> Log Out </ResponsiveNavLink>
+                  <ResponsiveNavLink as="button"> Cerrar Sesión </ResponsiveNavLink>
                 </form>
 
                 <!-- Team Management -->

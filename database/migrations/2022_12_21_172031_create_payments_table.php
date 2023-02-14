@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedFloat('amount');
             $table->date('payed_at')->nullable();
-            $table->date('expired_date');
+            $table->date('expired_date')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

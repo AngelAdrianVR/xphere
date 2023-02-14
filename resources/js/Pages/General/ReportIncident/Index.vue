@@ -27,7 +27,7 @@
       <InputError :message="$page.props?.errors.description" />
 		</div>
     <div>
-      <FileUploader />
+      <FileUploader @input="form.resources = $event.target.files" />
     </div>
     <div class="flex justify-center lg:justify-end">
 		  <PrimaryButton :disabled="form.processing">Reportar</PrimaryButton>
@@ -41,7 +41,7 @@
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import FileUploader from "@/Components/FileUploader.vue";
@@ -52,6 +52,7 @@ export default {
     const form = useForm({
         subject: "",
         description: "",
+        resources: null,
      
       })
     return {form};

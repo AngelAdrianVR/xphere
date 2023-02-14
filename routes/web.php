@@ -50,42 +50,42 @@ Route::middleware([
 Route::resource('neighborhood', PostController::class)->middleware('auth');
 
 //Guest routes
-Route::resource('guest',GuestController::class);
-Route::resource('favorite-guests',FavoriteGuestController::class);
-Route::post('favorite-guests-program', [FavoriteGuestController::class, 'programGuest'])->name('favorite-guests.program-guest');
-Route::resource('guest-events',EventController::class);
+Route::resource('guest',GuestController::class)->middleware('auth');
+Route::resource('favorite-guests',FavoriteGuestController::class)->middleware('auth');
+Route::post('favorite-guests-program', [FavoriteGuestController::class, 'programGuest'])->name('favorite-guests.program-guest')->middleware('auth');
+Route::resource('guest-events',EventController::class)->middleware('auth');
 
 //Payment routes
-Route::resource('payments',PaymentController::class);
-Route::get('/payments-history',[PaymentController::class, 'historyPayment'])->name('payments.history');
+Route::resource('payments',PaymentController::class)->middleware('auth');
+Route::get('/payments-history',[PaymentController::class, 'historyPayment'])->name('payments.history')->middleware('auth');
 
 //Reservation Facilities routes
-Route::resource('reservation-facilities',ReservationFacilityController::class);
+Route::resource('reservation-facilities',ReservationFacilityController::class)->middleware('auth');
 
 //Services routes
-Route::resource('internal-services',InternalServicesController::class);
-Route::resource('external-services',ExternalServicesController::class);
+Route::resource('internal-services',InternalServicesController::class)->middleware('auth');
+Route::resource('external-services',ExternalServicesController::class)->middleware('auth');
 
 //General and intern stuffs routes
-Route::resource('general', GeneralController::class);
-Route::get('/general-documents', [GeneralController::class,'documents'])->name('general.documents');
-Route::get('/general-guard-house-chat', [GeneralController::class,'guardHouseChat'])->name('general.guard-house-chat');
-Route::get('/general-report-incident', [GeneralController::class,'reportIncident'])->name('general.report-incident');
-Route::get('/general-surveys', [GeneralController::class,'surveys'])->name('general.surveys');
-Route::get('/general-permissions', [GeneralController::class,'permissions'])->name('general.permissions');
-Route::get('/general-suggestions', [GeneralController::class,'suggestions'])->name('general.suggestions');
+Route::resource('general', GeneralController::class)->middleware('auth');
+Route::get('/general-documents', [GeneralController::class,'documents'])->name('general.documents')->middleware('auth');
+Route::get('/general-guard-house-chat', [GeneralController::class,'guardHouseChat'])->name('general.guard-house-chat')->middleware('auth');
+Route::get('/general-report-incident', [GeneralController::class,'reportIncident'])->name('general.report-incident')->middleware('auth');
+Route::get('/general-surveys', [GeneralController::class,'surveys'])->name('general.surveys')->middleware('auth');
+Route::get('/general-permissions', [GeneralController::class,'permissions'])->name('general.permissions')->middleware('auth');
+Route::get('/general-suggestions', [GeneralController::class,'suggestions'])->name('general.suggestions')->middleware('auth');
 
 //Incidents routes
-Route::resource('incidents', IncidentController::class);
+Route::resource('incidents', IncidentController::class)->middleware('auth');
 
 //Resident permissions routes
-Route::resource('resident-permissions', ResidentPermissionController::class);
+Route::resource('resident-permissions', ResidentPermissionController::class)->middleware('auth');
 
 //Suggestions routes
-Route::resource('suggestions', SuggestionController::class);
+Route::resource('suggestions', SuggestionController::class)->middleware('auth');
 
 
-//---------------------------------------------------------------------------------------------
+//------------------------------------ADMIN ROUTES-----------------------------------------------------------------------
 
 
 // Route::resource('facilities',FacilityController::class);
