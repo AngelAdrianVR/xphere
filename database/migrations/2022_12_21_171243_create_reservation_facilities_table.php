@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('reservation_facilities', function (Blueprint $table) {
             $table->id();
-            $table->time('event_start');
-            $table->time('event_end');
+            $table->string('reservation_name');
+            $table->timestamp('event_start');
             $table->unsignedTinyInteger('status');
             $table->text('notes')->nullable();
-            $table->date('reservation_date')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('facility_id')->constrained()->onDelete('cascade');
             $table->timestamps();
