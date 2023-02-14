@@ -33,7 +33,7 @@
         </p>
         <p class="flex items-center">
           <i class="fa-regular fa-image rounded-full p-1"></i>
-          <span>2</span>
+          <span>{{post.media.length}}</span>
         </p>
       </div>
     </footer>

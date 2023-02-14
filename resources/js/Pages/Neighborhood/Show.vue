@@ -1,8 +1,8 @@
 <template>
-  <AppLayout :title="post.title">
+  <AppLayout :title="post.data.title">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ post.title }}
+        {{ post.data.title }}
       </h2>
     </template>
     <div class="flex justify-start ml-2">
@@ -14,25 +14,25 @@
 
     <div class="max-w-2xl md:mx-auto mt-5 shadow-md shadow-gray-500/70 rounded-lg px-5 py-8 bg-white mx-4">
       <div class="flex items-center my-2">
-        <i class="fa-solid fa-house text-lg mr-2 text-gray-800"></i>
+        <i class="fa-solid fa-house text-lg mr-2 text-gray-700"></i>
         <div class="flex flex-col">
-          <span>{{ post.user }}</span>
-          <small class="text-gray-500 -mt-1">{{ post.created_at }}</small>
+          <span>{{ post.data.user.name }}</span>
+          <small class="text-gray-500 -mt-1">{{ post.data.created_at }}</small>
         </div>
       </div>
       <div class="bg-gray-200 border-2 shadow-md shadow-gray-400/70 rounded-md px-2 py-1">
         <main>
           <div class="my-1">
-            <h1 class="font-bold text-lg text-gray-700">{{ post.title }}</h1>
+            <h1 class="font-bold text-lg text-gray-700">{{ post.data.title }}</h1>
             <p class="text-sm text-gray-700 max-h-20 overflow-hidden">
-              {{ post.content }}
+              {{ post.data.content }}
             </p>
           </div>
-          <div class="mt-7">
-            <InputLabel class="text-gray-400" value="Archivos subidos" />
+          <div class="mt-5">
+            <InputLabel class="text-gray-400" value="Imágenes" />
             <div
               class="flex flex-col"
-              v-for="file in media"
+              v-for="file in post.data.media"
               :key="file.id"
             >
               <div>
@@ -97,7 +97,6 @@ export default {
   },
   props: {
     post: Object,
-    media: Array,
   },
   methods:{
     comment_toggle(){

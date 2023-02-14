@@ -20,6 +20,7 @@ class PostResource extends JsonResource
             'content' => $this->content,
             'user' => $this->whenLoaded('user'),
             'created_at' => $this->created_at->diffForHumans(),
+            'media' => $this->getMedia()->all(),
         ];
     }
 }

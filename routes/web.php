@@ -47,7 +47,7 @@ Route::middleware([
 
 // ---------------------------------- USER ROUTES ---------------------------------------
 //Neighborhood routes
-Route::resource('neighborhood', PostController::class)->middleware('auth');
+Route::resource('neighborhood', PostController::class)->middleware('auth')->parameters(['neighborhood' => 'post']);
 
 //Guest routes
 Route::resource('guest',GuestController::class)->middleware('auth');
