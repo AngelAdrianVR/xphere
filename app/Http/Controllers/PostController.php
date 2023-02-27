@@ -11,7 +11,7 @@ class PostController extends Controller
   
     public function index()
     {
-        $posts = PostResource::collection(Post::with('user')->whereHas('user', function($query) {
+        $posts = PostResource::collection(Post::with('user','comments.user')->whereHas('user', function($query) {
             $query->where('sphere_id', auth()->user()->sphere_id);
         })->latest()->paginate(15));
 

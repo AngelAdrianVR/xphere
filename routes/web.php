@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComentController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExternalServicesController;
 use App\Http\Controllers\FacilityController;
@@ -48,7 +49,7 @@ Route::middleware([
 // ---------------------------------- USER ROUTES ---------------------------------------
 //Neighborhood routes
 Route::resource('neighborhood', PostController::class)->middleware('auth')->parameters(['neighborhood' => 'post']);
-
+Route::post('post/comment', [ComentController::class, 'store'])->middleware('auth')->name('comments.store');
 //Guest routes
 Route::resource('guest',GuestController::class)->middleware('auth');
 Route::resource('favorite-guests',FavoriteGuestController::class)->middleware('auth');

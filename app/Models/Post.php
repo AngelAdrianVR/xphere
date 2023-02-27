@@ -27,4 +27,9 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsTo(Sphere::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Coment::class);
+    }
 }

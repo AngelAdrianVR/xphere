@@ -117,6 +117,11 @@ class User extends Authenticatable
         return $this->hasMany(ResidentPermission::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Coment::class);
+    }
+
 
     // public function isDebtor()
     // {
