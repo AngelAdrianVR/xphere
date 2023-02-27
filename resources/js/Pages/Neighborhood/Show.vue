@@ -49,12 +49,6 @@
       </div>
       <footer class="flex justify-between items-center w-full border-b-2 border-gray-200">
       <div class="flex space-x-3 text-gray-600 mt-2">
-        <p class="flex items-center">
-        <button @click="" class="p-1 rounded-lg hover:bg-gray-300/50 text-cyan-600">
-          <i class="fa-regular fa-thumbs-up rounded-full p-1"></i>
-          <span>Me Gusta</span>
-        </button>  
-        </p>
         <button @click="comment_toggle()" class="p-1 rounded-lg hover:bg-gray-300/50">
         <p class="flex items-center">
           <i class="fa-regular fa-comment rounded-full p-1"></i>
@@ -63,11 +57,24 @@
         </button>
       </div>
     </footer>
+      <form @submit.prevent="store">
       <div v-if="comment" class="relative flex items-center z-0 mb-6 w-[99%] group mt-4">
-        <textarea type="text" rows="1" name="floating_content" autocomplete="off" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder=" " />
-        <label for="floating_content" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-cyan-600 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Escribe tu comentario</label>
+        <textarea v-model="form.message" type="text" rows="1" name="floating_content" autocomplete="off" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer" placeholder=" " />
+        <label for="floating_content" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-cyan-600 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Escribe tu comentario..</label>
+        <InputError :message="$page.props?.errors.message" />
         <PrimaryButton class="ml-5 mt-4"><i class="fa-solid fa-paper-plane"></i></PrimaryButton>
     </div>
+      </form>
+      <div v-for="comment in post.data.comments" :key="comment.id">
+         <div class="flex items-center my-2">
+        <i class="fa-solid fa-house text-lg mr-2 text-gray-700"></i>
+        <div class="flex flex-col">
+          <span>{{ comment.user.name }}</span>
+          <small class="text-gray-500 -mt-1">{{ comment.created_at }}</small>
+        </div>
+        
+      </div>
+      </div>
       
     </div>
 
@@ -80,12 +87,19 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import PostCard from "@/Components/Cards/PostCard.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputLabel from "@/Components/InputLabel.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
+import InputError from "@/Components/InputError.vue";
 
 export default {
   data(){
+    const form = useForm({
+        message: "",
+        post_id: this.post.data.id,
+      })
+
     return{
       comment: 0,
+      form,
     }
   },
   components: {
@@ -94,6 +108,7 @@ export default {
     PrimaryButton,
     Link,
     InputLabel,
+    InputError,
   },
   props: {
     post: Object,
@@ -101,6 +116,9 @@ export default {
   methods:{
     comment_toggle(){
       this.comment = !this.comment
+    },
+    store(){
+      this.form.post(route('comments.store'));
     }
 
   },
