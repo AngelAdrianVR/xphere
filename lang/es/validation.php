@@ -158,5 +158,7 @@ return [
         'limit_date' => 'fecha límite',
         'terms' => 'Términos y condiciones',
         'sphere_uid' => 'Código único de fraccionamiento',
+        'event_start' => 'fecha y hora de comienzo',
+        'reservation_name' => 'nombre de reservacion',
     ],
 ];
