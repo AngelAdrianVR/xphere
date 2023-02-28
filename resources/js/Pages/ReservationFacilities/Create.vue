@@ -6,16 +6,6 @@
       </h2>
     </template>
 
-    <AlertInfo>
-      <template #title> ATENCIÓN </template>
-      <template #info>
-        El código debe ser mostrado al vigilante de caseta para dar acceso al
-        invitado. Anotar un número aproximado de visitantes.
-      </template>
-    </AlertInfo>
-
-    <Datepicker v-model="date" :markers="markers" />
-
     <div class="flex justify-start ml-2">
       <Link
         :href="route('reservation-facilities.index')"
@@ -46,7 +36,7 @@
         rounded-lg
         px-5
         py-8
-        bg-gray-200
+        bg-white
         mx-4
       "
     >
@@ -56,20 +46,11 @@
         </FloatingInput>
         <InputError :message="$page.props?.errors.reservation_name" />
 
-        <FloatingInput v-model="form.reservation_date" type="date">
-          <template #label> Fecha de reservación * </template>
-        </FloatingInput>
-        <InputError :message="$page.props?.errors.reservation_name" />
-
-        <FloatingInput v-model="form.event_start" type="time">
-          <template #label> Hora de comienzo * </template>
-        </FloatingInput>
+        <label class="text-xs text-gray-500">Fecha y hora de comienzo *</label>
+        <Datepicker v-model="form.event_start" :markers="markers" :month-change-on-scroll="false" model-type="yyyy-MM-dd HH:mm" class="mb-4" />
         <InputError :message="$page.props?.errors.event_start" />
 
-        <FloatingInput v-model="form.event_end" type="time">
-          <template #label> Hora de terminación * </template>
-        </FloatingInput>
-        <InputError :message="$page.props?.errors.event_end" />
+        {{ form.event_start }}
 
         <div class="relative z-0 mb-6 w-full group">
           <textarea
@@ -132,6 +113,7 @@ import InputError from "@/Components/InputError.vue";
 import FloatingInput from "@/Components/FloatingInput.vue";
 import AlertInfo from "@/Components/AlertInfo.vue";
 import Datepicker from "@vuepic/vue-datepicker";
+
 import "@vuepic/vue-datepicker/dist/main.css";
 import addDays from 'date-fns/addDays';
 
@@ -139,9 +121,7 @@ export default {
   data() {
     const form = useForm({
       reservation_name: "",
-      reservation_date: null,
       event_start: null,
-      event_end: null,
       notes: "",
       facility_id: this.facility.id,
     });

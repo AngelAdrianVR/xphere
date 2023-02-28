@@ -10,17 +10,16 @@ class ReservationFacility extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reservation_name',
         'event_start',
-        'event_end',
         'status',
         'notes',
-        'reservation_date',
         'user_id',
         'facility_id',
     ];
 
     protected $dates = [ 
-        'reservation_date',
+        'event_start',
     ];
 
     //relationships
