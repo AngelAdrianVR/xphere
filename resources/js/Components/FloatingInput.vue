@@ -21,7 +21,7 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
 
-<div class="relative z-0 mb-6 w-full group">
+<div class="relative z-0 w-full group">
           <input
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('reservation_name');
             $table->timestamp('event_start');
-            $table->unsignedTinyInteger('status');
+            $table->unsignedTinyInteger('status')->default(0);
             $table->text('notes')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('facility_id')->constrained()->onDelete('cascade');
