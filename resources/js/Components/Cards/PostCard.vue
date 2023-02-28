@@ -21,15 +21,15 @@
         </main>
       </div>
     </Link>
-    <footer class="flex justify-between items-center">
+    <footer class="flex justify-center items-center">
       <div class="flex space-x-3 text-gray-600 mt-2">
-        <p class="flex items-center">
+        <!-- <p class="flex items-center">
           <i class="fa-regular fa-thumbs-up rounded-full p-1"></i>
           <span>10</span>
-        </p>
+        </p> -->
         <p class="flex items-center">
           <i class="fa-regular fa-comment rounded-full p-1"></i>
-          <span>4</span>
+          <span>{{post.comments.length  }}</span>
         </p>
         <p class="flex items-center">
           <i class="fa-regular fa-image rounded-full p-1"></i>

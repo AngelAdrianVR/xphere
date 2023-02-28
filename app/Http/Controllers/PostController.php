@@ -47,7 +47,7 @@ class PostController extends Controller
  
     public function show(Post $post)
     {
-        $post = PostResource::make(Post::with('user')->find($post->id));
+        $post = PostResource::make(Post::with('user','comments.user')->find($post->id));
 
         // return $post;
 
