@@ -136,13 +136,15 @@
     <p v-else class="text-gray-600 text-center">No tienes visitas programadas.</p>
 
 <!-- -------------------------FACILITY RESERVATIONS------------------------ -->
-<h1 class="text-lg font-bold text-gray-500 text-center mt-7">Reservaciones de Áreas</h1>
+<h1 class="text-lg font-bold text-gray-500 text-center mt-7">Reservaciones de areas proximas</h1>
 
-    <div v-if="guests.data.length" class="py-4">
+    <div v-if="next_reservations.length" class="py-4">
       <div class="max-w-7xl mx-auto lg:px-8">
         <div class="lg:grid grid-cols-3 gap-4">
-          <GuestCard v-for="guest in guests.data" :key="guest.id" :guest="guest" />
-        </div>
+          <div v-for="(reservation) in next_reservations" :key="reservation.id" class="bg-gray-50 rounded-md shadow-md px-2 py-1 mb-4 lg:mb-0">
+            {{ reservation }}
+          </div>
+        </div>cursor-pointer
       </div>
     </div>
     <p v-else class="text-gray-600 text-center">No tienes reservaciones pendientes.</p>
@@ -164,6 +166,7 @@
 </template>
 
 <script>
+
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import InformationGlobe from "@/Components/InformationGlobe.vue"; 
@@ -181,7 +184,7 @@ export default {
     user: Object,
     guests: Object,
     pendent_payments: Object,
-    
+    next_reservations: Array,
   },
   components: {
     AppLayout,
