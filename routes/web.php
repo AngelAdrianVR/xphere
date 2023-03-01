@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExternalServicesController;
 use App\Http\Controllers\FacilityController;
@@ -35,15 +36,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        $sphere = auth()->user()->sphere;
-        $user = auth()->user();
-        $user_id = auth()->id();
-        $guests = GuestResource::collection(Guest::where('user_id', $user_id)->whereNull('arrived_time')->get());
-        $pendent_payments = PaymentResource::collection(auth()->user()->payments()->whereNull('payed_at')->with('user')->latest()->get());
-        // return $pendent_payments;
-        return Inertia::render('Dashboard', compact('sphere','user','guests','pendent_payments'));
-    })->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 });
 
 // ---------------------------------- USER ROUTES ---------------------------------------

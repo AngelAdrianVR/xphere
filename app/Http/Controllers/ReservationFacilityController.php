@@ -16,8 +16,11 @@ class ReservationFacilityController extends Controller
     {
         $sphere_id = auth()->user()->sphere_id;
         $facilities = FacilityResource::collection(Facility::where('sphere_id', $sphere_id)->get());
+        $my_next_reservations = ReservationFacility::where('user_id', auth()->id())
+            ->whereDate('event_start', '>', today())
+            ->get();
 
-        return Inertia::render('ReservationFacilities/Index', compact('facilities'));
+        return Inertia::render('ReservationFacilities/Index', compact('facilities', 'my_next_reservations'));
     }
 
   

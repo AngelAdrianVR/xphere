@@ -1,6 +1,6 @@
 <template>
      <!-- component -->
-    <div class="flex items-center justify-center bg-transparent my-7">
+    <div class="flex items-center justify-center bg-transparent">
       <div
         class="flex flex-col shadow-lg shadow-gray-400/100 bg-white rounded-lg"
         style="width: 370px; height: 550px rounded: 10px"

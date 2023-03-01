@@ -24,11 +24,11 @@
 
 
     <div
-      class="max-w-2xl md:mx-auto mt-5 shadow-md shadow-gray-500/70 rounded-lg px-5 py-8 bg-gray-200 mx-4"
+      class="max-w-2xl md:mx-auto mt-5 shadow-md shadow-gray-500/70 rounded-lg px-5 py-8 bg-gray-50 mx-4"
     >
       <form @submit.prevent="update">
         <select
-          class="bg-gray-200 mb-7 mr-2 rounded-lg border border-gray-300 text-gray-500 focus:border-cyan-500 focus:text-cyan-500"
+          class="bg-gray-50 mb-7 mr-2 rounded-lg border border-gray-300 text-gray-500 focus:border-cyan-500 focus:text-cyan-500"
           required
           v-model="form.guest_type_id"
         >
@@ -45,32 +45,38 @@
           </option>
         </select>
 
-        <FloatingInput v-model="form.name" type="text">
-        <template #label>
-            Nombre *
-        </template>
-       </FloatingInput>
-       <InputError :message="$page.props?.errors.name" />
+        <div class="mb-5">
+          <FloatingInput v-model="form.name" type="text">
+          <template #label>
+              Nombre *
+          </template>
+         </FloatingInput>
+         <InputError :message="$page.props?.errors.name" />
+        </div>
 
-       <FloatingInput v-model="form.brand_car" type="text">
-        <template #label>
-            Marca/modelo del Vehiculo
-        </template>
-       </FloatingInput>
-       <InputError :message="$page.props?.errors.brand_car" />
+        <div class="mb-5">
+          <FloatingInput v-model="form.brand_car" type="text">
+           <template #label>
+               Marca/modelo del Vehiculo
+           </template>
+          </FloatingInput>
+          <InputError :message="$page.props?.errors.brand_car" />
+        </div>
 
-       <FloatingInput v-model="form.plate_car" type="text">
-        <template #label>
-            Placa
-        </template>
-       </FloatingInput>
-       <InputError :message="$page.props?.errors.plate_car" />
+        <div class="mb-5">
+          <FloatingInput v-model="form.plate_car" type="text">
+           <template #label>
+               Placa
+           </template>
+          </FloatingInput>
+          <InputError :message="$page.props?.errors.plate_car" />
+        </div>
 
         <div class="relative z-0 mb-6 w-full group">
           <textarea
             v-model="form.notes"
             type="text"
-            rows="4"
+            rows="2"
             name="floating_notes"
             autocomplete="off"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-cyan-500 focus:outline-none focus:ring-0 focus:border-cyan-600 peer"
