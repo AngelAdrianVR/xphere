@@ -14,6 +14,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationFacilityController;
 use App\Http\Controllers\ResidentPermissionController;
 use App\Http\Controllers\SuggestionController;
+use App\Http\Controllers\SuscruptionController;
 use App\Http\Resources\GuestResource;
 use App\Http\Resources\PaymentResource;
 use App\Models\Guest;
@@ -50,6 +51,7 @@ Route::middleware([
 //Neighborhood routes
 Route::resource('neighborhood', PostController::class)->middleware('auth')->parameters(['neighborhood' => 'post']);
 Route::post('post/comment', [ComentController::class, 'store'])->middleware('auth')->name('comments.store');
+Route::delete('post/comment/destroy/{coment}', [ComentController::class, 'destroy'])->middleware('auth')->name('comments.destroy');
 //Guest routes
 Route::resource('guest',GuestController::class)->middleware('auth');
 Route::resource('favorite-guests',FavoriteGuestController::class)->middleware('auth');
@@ -84,6 +86,9 @@ Route::resource('resident-permissions', ResidentPermissionController::class)->mi
 
 //Suggestions routes
 Route::resource('suggestions', SuggestionController::class)->middleware('auth');
+
+//Suscriptions routes
+Route::resource('suscriptions', SuscruptionController::class)->middleware('auth');
 
 
 //------------------------------------ADMIN ROUTES-----------------------------------------------------------------------

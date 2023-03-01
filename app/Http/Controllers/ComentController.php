@@ -53,6 +53,8 @@ class ComentController extends Controller
     
     public function destroy(Coment $coment)
     {
-        //
+        $coment->delete();
+        return to_route('neighborhood.show',$coment->post_id);
+
     }
 }

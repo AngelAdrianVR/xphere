@@ -109,7 +109,7 @@
             <span class="font-bold">{{ comment.user.name }}</span>
             <small class="text-gray-500 -mt-1">{{ comment.created_at }}</small>
             <p class="text-sm my-1">{{ comment.message }}</p>
-            <p @click="replyToggle" class="font-semibold text-cyan-700 hover:text-cyan-500 cursor-pointer">Responder</p> 
+            <!-- <p @click="replyToggle" class="font-semibold text-cyan-700 hover:text-cyan-500 cursor-pointer">Responder</p> 
 
             <form @submit.prevent="storeReply">
         <div
@@ -135,35 +135,35 @@
             ><i class="fa-solid fa-paper-plane"></i
           ></PrimaryButton>
         </div>
-      </form>
+      </form> -->
       
           </div>
 
-          <i
+          <i v-if="comment.user.id == $page.props.user.id"
             class="fa-solid fa-ellipsis-vertical absolute top-3 right-3 text-gray-600 p-2 rounded-full hover:bg-sky-300 cursor-pointer"
-            @click="dropdownOpen = !dropdownOpen"
+            @click="toggleDropdown(index)"
           >
           </i>
-          <div
-            v-show="dropdownOpen"
+          <div 
+            v-if="index === open_dropdown_selected_index"
             class=" absolute right-10 mt-2 w-24 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
             <div class="py-1 Z-10" role="none">
-              <a
+              <!-- <a
                 href="#"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:text-gray-900"
                 role="menuitem"
                 @click="editItem"
                 >Editar</a
-              >
+              > -->
               <a
                 href="#"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:text-gray-900"
                 role="menuitem"
-                @click="deleteItem"
+                @click="delete_confirm = true; item_to_delete = comment.id;"
                 >Eliminar</a
               >
             </div>
@@ -171,6 +171,26 @@
         </div>
       </div>
     </div>
+
+    <ConfirmationModal :show="delete_confirm" @close="delete_confirm = false">
+    <template #title>
+      <div>¿Deseas continuar?</div>
+    </template>
+    <template #content>
+      <div>
+        Estás a punto de eliminar tu comentario. Una vez realizado ya no se podrá
+        recuperar.
+      </div>
+    </template>
+    <template #footer>
+      <div class="flex justify-end">
+        <button @click="this.delete()" class="px-2 py-1 font-semibold border rounded border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition duration-200 mr-2">Eliminar</button>
+        <button class="px-2 py-1 font-semibold border rounded border-gray-500 text-gray-500 hover:bg-gray-100 transition duration-200" @click="delete_confirm = false">
+          Cancelar
+        </button>
+      </div>
+    </template>
+  </ConfirmationModal>
   </AppLayout>
 </template>
 <script>
@@ -180,13 +200,13 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import { Link, useForm } from "@inertiajs/inertia-vue3";
 import InputError from "@/Components/InputError.vue";
-import DropButtonGPT from "@/Components/DropButtonGPT.vue";
+import ConfirmationModal from "@/Components/ConfirmationModal.vue";
 
 export default {
   data() {
     const form = useForm({
       message: "",
-      message_reply: "",
+      // message_reply: "",
       post_id: this.post.data.id,
     });
 
@@ -194,7 +214,9 @@ export default {
       comment: false,
       reply: false,
       form,
-      dropdownOpen: false,
+      open_dropdown_selected_index: null,
+      delete_confirm: false,
+      item_to_delete: {},
     };
   },
   components: {
@@ -204,7 +226,7 @@ export default {
     Link,
     InputLabel,
     InputError,
-    DropButtonGPT,
+    ConfirmationModal,
   },
   props: {
     post: Object,
@@ -216,6 +238,11 @@ export default {
     replyToggle() {
       this.reply = !this.reply;
     },
+    toggleDropdown(index) {
+      this.open_dropdown_selected_index = index === this.open_dropdown_selected_index
+      ? null 
+      : index;
+    },
     store() {
       this.form.post(route("comments.store"));
       this.form.message = "";
@@ -224,12 +251,16 @@ export default {
       this.form.post(route("comments.store"));
       this.form.message = "";
     },
-    editItem() {
-      // Lógica para editar el elemento seleccionado
+    // editItem() {
+    //   Lógica para editar el elemento seleccionado
+    // },
+    delete() {
+      this.$inertia.delete(
+        this.route("comments.destroy", this.item_to_delete)
+      );
+      this.delete_confirm = false;
     },
-    deleteItem() {
-      // Lógica para eliminar el elemento seleccionado
-    },
+
   },
 };
 </script>
